@@ -6,4 +6,3 @@
 | Content Cell  | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  | Content Cell  |
 
-**Publicly Available GitHub Repository:**
