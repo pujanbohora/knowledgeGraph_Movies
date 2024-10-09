@@ -4,5 +4,5 @@
 | ------------- | ------------- | ------------- |
 | Kedar Sedai   | sedai.2@wright.edu | https://github.com/kedarSedai|
 | Pujan Bohora  | bohora.4@wright.edu  | https://github.com/pujanbohora  |
-| Content Cell  | Content Cell  | Content Cell  |
+| Tripuraneni Pooja Sri| tripuraneni.6@wright.edu  | https://github.com/PoojaSriTripuraneni  |
 
