@@ -1,11 +1,11 @@
 ## 1. Movie Release Date
-Rationale: A movie's release date is critical for its success, as timing affects audience turnout, box office performance, and competition. Strategic release dates (such as summer or holiday seasons) can maximize a film’s exposure and profitability.
-Connected Pattern: Time Interval Pattern (OWL-Time). This pattern models the release date as a temporal attribute linked to the movie's performance and audience reception.
-Source Dataset(s): TMDb Movie Dataset, Box Office Mojo
+Rationale: A movie's release date is critical for its success, as timing affects audience turnout, box office performance, and competition. Strategic release dates (such as summer or holiday seasons) can maximize a film’s exposure and profitability. <br>
+Connected Pattern: Time Interval Pattern (OWL-Time). This pattern models the release date as a temporal attribute linked to the movie's performance and audience reception. <br>
+Source Dataset(s): TMDb Movie Dataset, Box Office Mojo <br>
 ## 2. Seasonal Movie Releases
-Rationale: Movies released during certain seasons, such as summer blockbusters or holiday movies, tend to perform differently at the box office. Understanding the seasonal release strategy can help studios predict audience engagement and competition.
-Connected Pattern: Time Interval Pattern (OWL-Time). This pattern captures the seasonal aspect of movie releases and links them to performance metrics like gross earnings.
-Source Dataset(s): Box Office Mojo, IMDb
+Rationale: Movies released during certain seasons, such as summer blockbusters or holiday movies, tend to perform differently at the box office. Understanding the seasonal release strategy can help studios predict audience engagement and competition. <br>
+Connected Pattern: Time Interval Pattern (OWL-Time). This pattern captures the seasonal aspect of movie releases and links them to performance metrics like gross earnings. <br>
+Source Dataset(s): Box Office Mojo, IMDb <br>
 ## 3. Actor-Director Collaborations
 Rationale: Actor-Director Collaborations capture the relationships between specific actors and directors, highlighting which pairs frequently work together and the success of their films in terms of ratings and box office earnings. Understanding these collaborations provides insights into successful talent pairings, aiding both casting decisions and audience predictions. <br>
 Connected Pattern: AgentRole Pattern from MODL. This pattern models the roles actors and directors play in movie events. <br>
