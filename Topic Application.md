@@ -12,8 +12,8 @@
 ## Novelty : Is there already a knowledge graph for this topic?
    Yes, there are existing knowledge graphs in the entertainment domain, such as the IMDb Knowledge Graph, Entertainment Knowledge Graph Projects and the Neo4j Movie Database.
 ## Cross-Dataset Integration :
-    Combining data on actors, ratings, production companies and countries offer a novel exploration into trends that aren't typically integrated in existing movie knowldege graphs.
-
+  Combining data on actors, ratings, production companies, and countries offers a novel exploration into trends that aren't typically integrated in existing movie knowledge graphs.
+    
 
 ## Timeliness: Does creating a knowledge graph for this topic address a current event or important (unsolved) problem?
 
