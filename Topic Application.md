@@ -1,10 +1,25 @@
 # Topic : Movies
 
 - ## Merit : Is the topic intellectually challenging?
-- ### Complex Data Relationships : The relationships between movies, actors, directors, ratings and audience behavior are intricate and require a deep understanding of graph theory and data modeling to effectively capture these connections.
-- ### Ontology Development : Building and maintaining an ontology that accurately represents all entities and their relationships within the entertainment domain (e.g., actors starring in multiple movies) is a challengng but essential task.
-- ### Multidimensional Data Queries : The relationships between financial data, user ratings, votes and country-specific factors necessitate complex, multidimensional queries to retrieve insights.
+- ### Complex Data Relationships :
+   The relationships between movies, actors, directors, ratings and audience behavior are intricate and require a deep understanding of graph theory and data modeling to effectively capture these connections. 
+- ### Ontology Development :
+  Building and maintaining an ontology that accurately represents all entities and their relationships within the entertainment domain (e.g., actors starring in multiple movies) is a challengng but essential task. 
+- ### Multidimensional Data Queries :
+   The relationships between financial data, user ratings, votes and country-specific factors necessitate complex, multidimensional queries to retrieve insights.
 
 - ## Novelty : Is there already a knowledge graph for this topic?
-- ### Yes, there are existing knowledge graphs in the entertainment domain, such as the IMDb Knowledge Graph, Entertainment Knowledge Graph Projects and the Neo4j Movie Database.
-- ### Cross-Dataset Integration : Combining data on actors, ratings, production companies and countries offer a novel exploration into trends that aren't typically integrated in existing movie knowldege graphs.
+   Yes, there are existing knowledge graphs in the entertainment domain, such as the IMDb Knowledge Graph, Entertainment Knowledge Graph Projects and the Neo4j Movie Database.
+- ### Cross-Dataset Integration :
+    Combining data on actors, ratings, production companies and countries offer a novel exploration into trends that aren't typically integrated in existing movie knowldege graphs.
+
+
+## Timeliness: Does creating a knowledge graph for this topic address a current event or important (unsolved) problem?
+
+## Entertainment Industry Dynamics: 
+ The rise of streaming services like Netflix, Amazon Prime, and Disney+ has drastically altered how movies and shows are produced, distributed, and consumed. A knowledge graph could help analyze audience preferences, consumption patterns, and 
+ the impact of new platforms on movie production. 
+## Content Personalization: 
+ With growing competition among streaming platforms, providing personalized recommendations has become a key differentiator. A knowledge graph can enhance user behavior analysis and improve content recommendations using deep metadata insights.
+## Content Creation: 
+ AI-driven content creation is becoming more prevalent. A knowledge graph can assist writers, producers, and studios in identifying successful formulas (e.g., actors-director combinations, plot trends), providing data-driven insights for better decision-making.<br>
