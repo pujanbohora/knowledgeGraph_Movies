@@ -23,3 +23,15 @@
  With growing competition among streaming platforms, providing personalized recommendations has become a key differentiator. A knowledge graph can enhance user behavior analysis and improve content recommendations using deep metadata insights.
 ## Content Creation: 
  AI-driven content creation is becoming more prevalent. A knowledge graph can assist writers, producers, and studios in identifying successful formulas (e.g., actors-director combinations, plot trends), providing data-driven insights for better decision-making.<br>
+
+ ## Audience: Who would be interested in a knowledge graph for this topic?
+
+## Researchers and Academics:
+Scholars in media studies, data science, and artificial intelligence can utilize the graph to study patterns in movie performance, content trends, and audience behavior.
+## Movie Producers and Studios:
+Producers can leverage insights on actor-director success, financial performance, and production company trends to optimize casting and investment decisions.
+## Streaming Platforms:
+Platforms like Netflix and Amazon Prime can enhance their recommendation algorithms by analyzing ratings, votes, and actor-director relationships.
+## Marketing and Advertising Agencies:
+Agencies can use the insights to create targeted marketing campaigns based on the performance of certain actors, directors, and countries with different demographics.
+
