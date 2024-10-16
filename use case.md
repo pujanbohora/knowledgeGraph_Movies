@@ -6,6 +6,11 @@ The rise of streaming platforms and the evolving entertainment industry have cre
 
 Additionally, analyzing the correlation between a movie's budget and its gross earnings over different decades provides vital financial insights for studios and producers. This allows them to identify trends in financial performance and adjust budget allocations to maximize profitability. The ability to identify the highest-grossing production companies also supports studios in benchmarking against competitors and assessing which production strategies are most successful. 
 
+Countries producing the highest-grossing movies can offer insights into global content trends, highlighting which regions are gaining influence in the global entertainment market. Moreover, understanding the performance of high-budget movies in terms of ratings can guide decision-makers in determining how much investment is worth putting into a project and what returns to expect based on audience response.
+
+Overall, the knowledge graph allows for a more detailed exploration of relationships and trends within the movie industry, empowering stakeholders to make informed decisions based on data-driven insights.
+
+
 ## Competency Questions
 • What are the most common genres for <b>movies</b> featuring a specific <b>actor</b>?<br>
 •	Which actors have appeared in the most movies directed by specific <b>directors</b>?<br>
