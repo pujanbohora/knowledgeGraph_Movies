@@ -86,14 +86,14 @@
 7.    `TechnicalDirector hasTechnologyUsed min 1 xsd:string`<br>
        The TechnicalDirector uses at least one type of technology, represented as string. <br>
 
-**Genere**<br>
+**Genre**<br>
      ![genere](../schema-diagrams/Genere/genere.png)
 
 1.  `Genere hasTargetAudience exactly 1 xsd:string`<br>
-     The Genere has exactly one target audience, represented as string. <br>
+     The Genre has exactly one target audience, represented as string. <br>
 
 2.  `Genere hasOrigin exactly 1 xsd:string`<br>
-     The Genere has exactly one origin, represented as string. <br>
+     The Genre has exactly one origin, represented as string. <br>
 3.  `Comedy subClassOf Genere`<br>
      `Action subClassOf Genere`<br>
      `Horror subClassOf Genere`<br>
@@ -148,7 +148,7 @@
 7.  `Platform subClassOf MovieRatingObservation`<br>
     The Platform is a subclass of MovieRatingObservation, indicating that MovieRatingObservation can be further refined by Platform.<br>
 
-**ProducationCompany**
+**ProductionCompany**
     ![grossEarning](../schema-diagrams/ProductionCompany/productionCompanies.png)
 
 1.  `Movie providesProductionRole min 1 ProductionRole`<br>
