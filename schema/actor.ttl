@@ -1,0 +1,117 @@
+@prefix : <http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-6/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-6/> .
+
+<http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-6> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-6#hasTemporalExtent
+:hasTemporalExtent rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:domain :ActorRole ;
+                   rdfs:range :TemporalExtent .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-6#performsActorRole
+:performsActorRole rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Agent ;
+                   rdfs:range :ActorRole .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-6#providesActorRole
+:providesActorRole rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Movie ;
+                   rdfs:range :ActorRole .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-6#hasBackStory
+:hasBackStory rdf:type owl:DatatypeProperty ;
+              rdfs:domain :SupportingRole ;
+              rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-6#hasFanBase
+:hasFanBase rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdfs:domain :LeadRole ;
+            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-6#hasScreenTime
+:hasScreenTime rdf:type owl:DatatypeProperty ;
+               rdfs:domain :ActorRole ;
+               rdfs:range xsd:int .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-6#ActorRole
+:ActorRole rdf:type owl:Class ;
+           rdfs:subClassOf :AgentRole .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-6#Agent
+:Agent rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-6#AgentRole
+:AgentRole rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-6#LeadRole
+:LeadRole rdf:type owl:Class ;
+          rdfs:subClassOf :ActorRole ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasFanBase ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:string
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasScreenTime ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:int
+                          ] .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-6#Movie
+:Movie rdf:type owl:Class ;
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :providesActorRole ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :ActorRole
+                       ] .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-6#SupportingRole
+:SupportingRole rdf:type owl:Class ;
+                rdfs:subClassOf :ActorRole ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasBackStory ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onDataRange xsd:string
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasScreenTime ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onDataRange xsd:int
+                                ] .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-6#TemporalExtent
+:TemporalExtent rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
