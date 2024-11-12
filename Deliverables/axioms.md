@@ -1,4 +1,6 @@
 **Actor**
+     ![actor](../schema-diagrams/Actor/actor.png)
+**Actor**
     ![actor](../schema-diagrams/Actor/actor.png)
 
 1.  `ActorRole SubClass Of AgentRole` <br> 
