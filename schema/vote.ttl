@@ -1,0 +1,140 @@
+@prefix : <http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-15/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-15/> .
+
+<http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-15> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-15#hasFeatureOfInterest
+:hasFeatureOfInterest rdf:type owl:ObjectProperty ;
+                      rdfs:domain :VoteObservation ;
+                      rdfs:range :VoteDate .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-15#hasPhenomenonTime
+:hasPhenomenonTime rdf:type owl:ObjectProperty ;
+                   rdfs:domain :VoteObservation ;
+                   rdfs:range :VoteDate .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-15#hasResult
+:hasResult rdf:type owl:ObjectProperty ;
+           rdfs:domain :VoteObservation ;
+           rdfs:range :VoteCount .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-15#observedProperty
+:observedProperty rdf:type owl:ObjectProperty ;
+                  rdfs:domain :VoteObservation ;
+                  rdfs:range :VoteType .
+
+
+###  http://www.w3.org/2002/07/owl#topObjectProperty
+owl:topObjectProperty rdfs:domain :VoteObservation .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-15#hasADescription
+:hasADescription rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :VoteType ;
+                 rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-15#hasAPlatformName
+:hasAPlatformName rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Platform ;
+                  rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-15#hasAScale
+:hasAScale rdf:type owl:DatatypeProperty ;
+           rdfs:domain :VoteType ;
+           rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-15#hasSimpleResult
+:hasSimpleResult rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :VoteObservation ;
+                 rdfs:range xsd:float .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-15#Movie
+:Movie rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-15#Platform
+:Platform rdf:type owl:Class ;
+          rdfs:subClassOf :VoteObservation ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasAPlatformName ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:string
+                          ] .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-15#VoteCount
+:VoteCount rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-15#VoteDate
+:VoteDate rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-15#VoteObservation
+:VoteObservation rdf:type owl:Class ;
+                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasFeatureOfInterest ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :Movie
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasPhenomenonTime ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :VoteDate
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasResult ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :VoteCount
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :observedProperty ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :VoteType
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasSimpleResult ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onDataRange xsd:float
+                                 ] .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-15#VoteType
+:VoteType rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasADescription ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:string
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasAScale ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onDataRange xsd:int
+                          ] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
