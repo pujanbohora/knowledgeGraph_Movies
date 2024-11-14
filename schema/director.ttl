@@ -1,0 +1,130 @@
+@prefix : <http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-9/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-9/> .
+
+<http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-9> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-9#hasTemporalExtent
+:hasTemporalExtent rdf:type owl:ObjectProperty ;
+                   rdfs:domain :DirectorRole ;
+                   rdfs:range :TemporalExtent .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-9#performsDirectorRole
+:performsDirectorRole rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Agent ;
+                      rdfs:range :DirectorRole .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-9#providesDirectorRole
+:providesDirectorRole rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Movie ;
+                      rdfs:range :DirectorRole .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-9#hasDirectorialVision
+:hasDirectorialVision rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :MainDIrector ;
+                      rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-9#hasKeyDecision
+:hasKeyDecision rdf:type owl:DatatypeProperty ;
+                rdfs:domain :MainDIrector ;
+                rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-9#hasTechnicalChallenge
+:hasTechnicalChallenge rdf:type owl:DatatypeProperty ;
+                       rdfs:domain :TechnicalDirector ;
+                       rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-9#hasTechnologyUsed
+:hasTechnologyUsed rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :TechnicalDirector ;
+                   rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-9#Agent
+:Agent rdf:type owl:Class ;
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :performsDirectorRole ;
+                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :DirectorRole
+                       ] .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-9#DirectorRole
+:DirectorRole rdf:type owl:Class ;
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasTemporalExtent ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :TemporalExtent
+                              ] .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-9#MainDIrector
+:MainDIrector rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-9#MainDirector
+:MainDirector rdf:type owl:Class ;
+              rdfs:subClassOf :DirectorRole ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasDirectorialVision ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:string
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasKeyDecision ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:string
+                              ] .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-9#Movie
+:Movie rdf:type owl:Class ;
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :providesDirectorRole ;
+                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :DirectorRole
+                       ] .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-9#TechnicalDirector
+:TechnicalDirector rdf:type owl:Class ;
+                   rdfs:subClassOf :DirectorRole ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasTechnicalChallenge ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onDataRange xsd:string
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasTechnologyUsed ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onDataRange xsd:string
+                                   ] .
+
+
+###  http://www.semanticweb.org/dell/ontologies/2024/10/untitled-ontology-9#TemporalExtent
+:TemporalExtent rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
