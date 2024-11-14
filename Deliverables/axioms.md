@@ -1,7 +1,5 @@
 **Actor**
      ![actor](../schema-diagrams/Actor/actor.png)
-**Actor**
-    ![actor](../schema-diagrams/Actor/actor.png)
 
 1.  `ActorRole SubClass Of AgentRole` <br> 
      Actor roles are a type of agent role. <br> 
@@ -183,7 +181,7 @@
 
 
 **TemporalExtent**
-    ![grossEarning](../schema-diagrams/TemporalExtent/temporalExtent.png)
+    ![grossEarning](../schema-diagrams/InflationRate/inflationRate.png)
 
 1.  `InflationObservation contains exactly 1 InflationTimeExtent`
     The InflationObservation contains exactly one InflationTimeExtent.
