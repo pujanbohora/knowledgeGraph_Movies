@@ -182,7 +182,7 @@
     The Distribution has exactly one distribution region, represented as a string.<br>
 
 
-**TemporalExtent**
+**TemporalExtent**<br>
     ![inflationRate](../schema-diagrams/InflationRate/inflationRate.png)
 
 1.  `InflationObservation contains exactly 1 InflationTimeExtent`<br>
