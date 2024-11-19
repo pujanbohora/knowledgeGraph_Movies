@@ -1,5 +1,5 @@
-**Actor**
-     ![actor](../schema-diagrams/Actor/actor.png)
+**Actor**<br>
+     ![actor](../schema-diagrams/Actor/actor.jpg)
 
 1.  `ActorRole SubClass Of AgentRole` <br> 
      Actor roles are a type of agent role. <br> 
@@ -31,7 +31,7 @@
 
 
 **Budget**<br>
-    ![budget](../schema-diagrams/Budget/budget.png)
+    ![budget](../schema-diagrams/Budget/budget.jpg)
 
 1. `Budget hasQuantityValue exactly 1 QuantityValue` <br>
     Every Budget has exactly one QuantityValue<br>
@@ -45,11 +45,13 @@
 4.  `QuantityValue hasNumericValue exactly 1 xsd:double`<br>
      Every QuantityValue has exactly one numeric value of type xsd:double. <br>
 
-**Country**
-    ![country](../schema-diagrams/Country/country.png)
+**Country**<br>
+    ![country](../schema-diagrams/Country/country.jpg)
 
 1.  `ProductionCompany basedIn min 1 Place`<br>
+
      The Production Company is based in at least one Place. <br>
+
 
 2.  `Movie hasFilmingLocation min 1 Place`<br>
      The Movie has at least one filming location. <br>
@@ -63,8 +65,8 @@
 5.  `Country hasCity min 1 City`<br>
      The Country has at least one city.<br>
 
-**Director**
-    ![director](../schema-diagrams/Director/director.png)
+**Director**<br>
+    ![director](../schema-diagrams/Director/Director.jpg)
 
 1.  `Movie providesDirectorRole min 1 DirectorRole`<br>
      The Movie provides at least one DirectorRole.<br>
@@ -88,10 +90,14 @@
        The TechnicalDirector uses at least one type of technology, represented as string. <br>
 
 **Genere**<br>
-        ![genere](../schema-diagrams/Genere/genere.png)
 
 1.  `Genere hasTargetAudience exactly 1 xsd:string`<br>
      The Genere has exactly one target audience, represented as string. <br>
+        ![genere](../schema-diagrams/Genere/Genere.jpg)
+
+1.  `Genere hasTargetAudience exactly 1 xsd:string`<br>
+     The Genere has exactly one target audience, represented as string.<br> 
+
 
 2.  `Genere hasOrigin exactly 1 xsd:string`<br>
      The Genere has exactly one origin, represented as string. <br>
@@ -112,8 +118,8 @@
 6.  `MonsterHorror subClassOf Horror`<br>
      MonsterHorror is a subClass of Horror. <br>
 
-**GrossEarning**
-    ![grossEarning](../schema-diagrams/GrossEarning/grossEarning.png)
+**GrossEarning**<br>
+    ![grossEarning](../schema-diagrams/GrossEarning/grossEarning.jpg)
 
 1.  `GrossEarnings hasEarningValue exactly 1 EarningValue`<br>
     The GrossEarnings has exactly one EarningValue. <br>
@@ -127,7 +133,7 @@
 4.  `GrossEarnings hasEarningsType exactly 1 EarningsType`<br>
      The GrossEarnings has exactly one type of earnings.<br>
 
-**MovieRating**
+**MovieRating**<br>
     ![grossEarning](../schema-diagrams/MovieRating/movieRating.png)
 
 1.  `MovieRatingObservation hasSimpleResult exactly 1 rdfs:NumericUserRatingValue`<br>
@@ -143,6 +149,7 @@
     The MovieRatingObservation is associated with exactly one observed Movie.<br>
 
 5. `MovieRatingObservation hasPhenomenonTime exactly 1 RatingDate`  <br> 
+
     The MovieRatingObservation has exactly one phenomenon time, represented by the RatingDate.<br>
 
 6. `MovieRatingObservation hasResultTime exactly 1 RatingDate`<br>
@@ -151,14 +158,15 @@
 7.  `Platform subClassOf MovieRatingObservation`<br>
     The Platform is a subclass of MovieRatingObservation, indicating that MovieRatingObservation can be further refined by Platform.<br>
 
-**ProducationCompany**
-    ![grossEarning](../schema-diagrams/ProductionCompany/productionCompanies.png)
+**ProducationCompany**<br>
+    ![grossEarning](../schema-diagrams/ProductionCompany/ProductionCompanies.jpg)
 
 1.  `Movie providesProductionRole min 1 ProductionRole`<br>
      The Movie provides at least one ProductionRole.<br>
 
 2. `Agent performsAgentRole exactly 1 ProductionRole`<br>
     The Agent performs exactly one ProductionRole.<br>
+
 
 3. `ProductionRole hasTemporalExtent exactly 1 ProductionPeriod` <br> 
     The ProductionRole has exactly one temporal extent, represented by the ProductionPeriod.<br>
@@ -182,8 +190,8 @@
     The Distribution has exactly one distribution region, represented as a string.<br>
 
 
-**TemporalExtent**<br>
-    ![inflationRate](../schema-diagrams/InflationRate/inflationRate.png)
+**InflationRate**<br>
+    ![InflationRate](../schema-diagrams/InflationRate/inflationRate.jpg)
 
 1.  `InflationObservation contains exactly 1 InflationTimeExtent`<br>
     The InflationObservation contains exactly one InflationTimeExtent.<br>
@@ -206,8 +214,8 @@
 7. `ReleaseDate hasReferenceSystem exactly 1 CurrencyReferenceSystem`<br>
     The ReleaseDate has exactly one reference system, represented by CurrencyReferenceSystem.<br>
 
-**UserRating**
-    ![grossEarning](../schema-diagrams/UserRating/userRatings.png)
+**UserRating**<br>
+    ![grossEarning](../schema-diagrams/UserRating/userRatings.jpg)
 
 1.  `UserRatingObservation hasSimpleResult exactly 1 rdfs:NumericRatingValue`<br>
     The UserRatingObservation has exactly one simple result, represented by a NumericRatingValue.<br>
@@ -234,8 +242,8 @@
     The RatingType has exactly one maximum scale value, represented as an integer.<br>
 
 
-**Vote**
-    ![grossEarning](../schema-diagrams/Vote/vote.png)
+**Vote**<br>
+    ![grossEarning](../schema-diagrams/Vote/vote.jpg)
 
 1.  `VoteObservation hasSimpleResult exactly 1 rdfs:NumericVoteValue`<br>
     The VoteObservation has exactly one simple result, represented by a NumericVoteValue.<br>
