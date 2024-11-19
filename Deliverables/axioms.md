@@ -1,270 +1,771 @@
 **Actor**<br>
      ![actor](../schema-diagrams/Actor/actor.jpg)
 
-1.  `ActorRole SubClass Of AgentRole` <br> 
-     Actor roles are a type of agent role. <br> 
+Movie SubClassOf providesActorRole only ActorRole<br>
+The range of the relationship `providesActorRole` must be `ActorRole`.
 
-2.  `providesActorRole exactly 1 ActorRole` <br> 
-     Each movie provides exactly one actor role. <br> 
- 
-3.  `hasTemporalExtent exactly 1 TemporalExtent` <br> 
-     Each actor role has exactly one temporal extent. <br> 
+providesActorRole some owl:Thing SubClassOf Movie<br>
+If something provides an actor role, it must be a `Movie`.
 
-4.  `LeadRole SubClass Of ActorRole SupportingRole SubClass Of ActorRole` <br> 
-     Lead and supporting roles are specific types of actor roles <br> 
+Movie SubClassOf providesActorRole some ActorRole<br>
+Every `Movie` must provide at least one `ActorRole`.
 
-5.  `hasScreenTime exactly 1 xsd:int` <br> 
-     Both lead and supporting roles have exactly one screen time attribute of type integer. <br> 
+ActorRole SubClassOf performsActorRole only Agent<br>
+The range of the relationship `performsActorRole` must be `Agent`.
 
-6.  `hasFanBase exactly 1 xsd:String` <br> 
-     Each lead role has exactly one fan base attribute of type string. <br> 
+performsActorRole some owl:Thing SubClassOf ActorRole<br>
+If something performs an actor role, it must be an `ActorRole`.
 
-7. `hasBackStory exactly 1 xsd:String` <br> 
-    Each supporting role has exactly one backstory attribute of type string. <br> 
+ActorRole SubClassOf performsActorRole some Agent<br>
+Every `ActorRole` must be performed by an `Agent`.
 
-8.  `performsActorRole Domain Agent` <br> 
-     Actor roles are defined within the context of agents. <br> 
+ActorRole SubClassOf hasTemporalExtent only TemporalExtent<br>
+The range of the relationship `hasTemporalExtent` must be `TemporalExtent`.
 
-9.  `providesActorRole Domain Movie` <br> 
-     The Movie entity has a mandatory relationship with ActorRole. <br> 
+hasTemporalExtent some owl:Thing SubClassOf ActorRole<br>
+If something has a temporal extent, it must be an `ActorRole`.
 
+ActorRole SubClassOf hasTemporalExtent some TemporalExtent<br>
+Every `ActorRole` must have a temporal extent specifying time-related details.
 
+LeadRole SubClassOf hasScreenTime only xsd:int<br>
+The range of the relationship `hasScreenTime` must be `xsd:int`.
+
+hasScreenTime some owl:Thing SubClassOf LeadRole<br>
+If something has screen time, it must be a `LeadRole`.
+
+LeadRole SubClassOf hasScreenTime some xsd:int<br>
+Every `LeadRole` must have a screen time represented as an integer.
+
+LeadRole SubClassOf hasFanBase only xsd:String<br>
+The range of the relationship `hasFanBase` must be `xsd:String`.
+
+hasFanBase some owl:Thing SubClassOf LeadRole<br>
+If something has a fan base, it must be a `LeadRole`.
+
+LeadRole SubClassOf hasFanBase some xsd:String<br>
+Every `LeadRole` must have a fan base represented as a string.
+
+SupportingRole SubClassOf hasScreenTime only xsd:int<br>
+The range of the relationship `hasScreenTime` must be `xsd:int`.
+
+hasScreenTime some owl:Thing SubClassOf SupportingRole<br>
+If something has screen time, it must be a `SupportingRole`.
+
+SupportingRole SubClassOf hasScreenTime some xsd:int<br>
+Every `SupportingRole` must have a screen time represented as an integer.
+
+SupportingRole SubClassOf hasBackStory only xsd:String<br>
+The range of the relationship `hasBackStory` must be `xsd:String`.
+
+hasBackStory some owl:Thing SubClassOf SupportingRole<br>
+If something has a backstory, it must be a `SupportingRole`.
+
+SupportingRole SubClassOf hasBackStory some xsd:String<br>
+Every `SupportingRole` must have a backstory represented as a string.
+
+LeadRole SubClassOf ActorRole<br>
+`LeadRole` is a subclass of `ActorRole`.
+
+SupportingRole SubClassOf ActorRole<br>
+`SupportingRole` is a subclass of `ActorRole`.
+
+LeadRole ⊓ SupportingRole ⊑ ⊥<br>
+`LeadRole` and `SupportingRole` are disjoint classes, meaning an entity cannot belong to both classes simultaneously.
+
+ActorRole SubClassOf ∀hasTemporalExtent.TemporalExtent<br>
+All objects of the `hasTemporalExtent` relationship for `ActorRole` must be of type `TemporalExtent`
 
 **Budget**<br>
     ![budget](../schema-diagrams/Budget/budget.jpg)
 
-1. `Budget hasQuantityValue exactly 1 QuantityValue` <br>
-    Every Budget has exactly one QuantityValue<br>
-    
-2. `QuantityValue hasQuantityKind exactly 1 QuantityKind`<br>
-    Every QuantityValue has exactly one QuantityKind<br>
+Budget SubClassOf hasQuantityKind only QuantityKind<br>
+The range of the relationship `hasQuantityKind` must be `QuantityKind`.
 
-3.  `QuantityValue hasUnit exactly 1 Unit`<br>
-     Every QuantityValue has exactly one Unit.<br> 
-    
-4.  `QuantityValue hasNumericValue exactly 1 xsd:double`<br>
-     Every QuantityValue has exactly one numeric value of type xsd:double. <br>
+hasQuantityKind some owl:Thing SubClassOf Budget<br>
+If something has a `hasQuantityKind` relationship, it must be a `Budget`.
+
+Budget SubClassOf hasQuantityKind some QuantityKind<br>
+Every `Budget` must be associated with at least one `QuantityKind`.
+
+Budget SubClassOf hasQuantityValue only QuantityValue<br>
+The range of the relationship `hasQuantityValue` must be `QuantityValue`.
+
+hasQuantityValue some owl:Thing SubClassOf Budget<br>
+If something has a `hasQuantityValue` relationship, it must be a `Budget`.
+
+Budget SubClassOf hasQuantityValue some QuantityValue<br>
+Every `Budget` must have at least one `QuantityValue`.
+
+QuantityValue SubClassOf hasUnit only Unit<br>
+The range of the relationship `hasUnit` must be `Unit`.
+
+hasUnit some owl:Thing SubClassOf QuantityValue<br>
+If something has a `hasUnit` relationship, it must be a `QuantityValue`.
+
+QuantityValue SubClassOf hasUnit some Unit<br>
+Every `QuantityValue` must have a unit associated with it.
+
+QuantityValue SubClassOf hasNumericValue only xsd:double<br>
+The range of the relationship `hasNumericValue` must be `xsd:double`.
+
+hasNumericValue some owl:Thing SubClassOf QuantityValue<br>
+If something has a `hasNumericValue` relationship, it must be a `QuantityValue`.
+
+QuantityValue SubClassOf hasNumericValue some xsd:double<br>
+Every `QuantityValue` must have a numeric value represented as a double.
+
+QuantityKind ⊓ Unit ⊑ ⊥<br>
+`QuantityKind` and `Unit` are disjoint classes, meaning an entity cannot belong to both classes simultaneously.
+
+Budget ⊓ QuantityValue ⊑ ⊥<br>
+`Budget` and `QuantityValue` are disjoint classes, meaning an entity cannot belong to both classes simultaneously.
+
+QuantityValue SubClassOf ∀hasNumericValue.xsd:double<br>
+All objects of the `hasNumericValue` relationship for `QuantityValue` must be of type `xsd:double`.
+
+Budget SubClassOf ⊤<br>
+`Budget` is a class that exists as a superclass for other relationships
 
 **Country**<br>
     ![country](../schema-diagrams/Country/country.jpg)
 
-1.  `ProductionCompany basedIn min 1 Place`<br>
+ProductionCompany SubClassOf basedIn only Place<br>
+The range of the relationship `basedIn` must be `Place`.
 
-     The Production Company is based in at least one Place. <br>
+basedIn some owl:Thing SubClassOf ProductionCompany<br>
+If something is based in a location, it must be a `ProductionCompany`.
 
+ProductionCompany SubClassOf basedIn some Place<br>
+Every `ProductionCompany` must have a base location represented as a `Place`.
 
-2.  `Movie hasFilmingLocation min 1 Place`<br>
-     The Movie has at least one filming location. <br>
+Movie SubClassOf hasFilmingLocation only Place<br>
+The range of the relationship `hasFilmingLocation` must be `Place`.
 
-3.  `City hasName exactly 1 xsd:String`<br>
-     The City has exactly one name, represented as String. <br>
+hasFilmingLocation some owl:Thing SubClassOf Movie<br>
+If something has a filming location, it must be a `Movie`.
 
-4.  `Person isACitizenOf min 1 Country`<br>
-     The person is a citizen of at least one country.<br>
+Movie SubClassOf hasFilmingLocation some Place<br>
+Every `Movie` must have at least one filming location represented by a `Place`.
 
-5.  `Country hasCity min 1 City`<br>
-     The Country has at least one city.<br>
+Place SubClassOf hasCity only City<br>
+The range of the relationship `hasCity` must be `City`.
+
+hasCity some owl:Thing SubClassOf Place<br>
+If something has a city, it must be a `Place`.
+
+Place SubClassOf hasCity some City<br>
+Every `Place` must be associated with at least one `City`.
+
+City SubClassOf hasName only xsd:String<br>
+The range of the relationship `hasName` must be `xsd:String`.
+
+hasName some owl:Thing SubClassOf City<br>
+If something has a name, it must be a `City`.
+
+City SubClassOf hasName some xsd:String<br>
+Every `City` must have a name represented as a string.
+
+Person SubClassOf isACitizenOf only Country<br>
+The range of the relationship `isACitizenOf` must be `Country`.
+
+isACitizenOf some owl:Thing SubClassOf Person<br>
+If something is a citizen of a country, it must be a `Person`.
+
+Person SubClassOf isACitizenOf some Country<br>
+Every `Person` must be a citizen of at least one `Country`.
+
+Country SubClassOf hasCity only City<br>
+The range of the relationship `hasCity` must be `City`.
+
+hasCity some owl:Thing SubClassOf Country<br>
+If something has a city, it must be a `Country`.
+
+Country SubClassOf hasCity some City Every `Country` must have at least one associated `City`.
+
+City SubClassOf Place<br>
+A `City` is a subclass of `Place`.
+
+Country SubClassOf Place<br>
+A `Country` is a subclass of `Place`.
+
+City ⊓ Country ⊑ ⊥<br>
+`City` and `Country` are disjoint classes, meaning an entity cannot belong to both classes simultaneously.<br>
+ProductionCompany ⊓ Movie ⊑ ⊥<br>
+
+`ProductionCompany` and `Movie` are disjoint classes, meaning an entity cannot belong to both classes simultaneously.<br>
+City SubClassOf ∀hasName.xsd:String All objects of the `hasName` relationship for `City` must be of type `xsd:String`.<br>
+
+City SubClassOf ∀hasName.xsd:String<br>
+All objects of the `hasName` relationship for `City` must be of type `xsd:String`.
 
 **Director**<br>
     ![director](../schema-diagrams/Director/Director.jpg)
 
-1.  `Movie providesDirectorRole min 1 DirectorRole`<br>
-     The Movie provides at least one DirectorRole.<br>
+Movie SubClassOf providesDirectorRole only DirectorRole<br>
+The range of the relationship `providesDirectorRole` must be `DirectorRole`.
 
-2.  `Agent performsDirectorRole min 1 DirectorRole`<br>
-     The Agent performs at least one DirectorRole.<br>
+providesDirectorRole some owl:Thing SubClassOf Movie<br>
+If something provides a `DirectorRole`, it must be a `Movie`.
 
-3.  `DirectorRole hasTemporalExtent exactly 1 TemporalExtent`<br>
-     The DirectorRole has exactly one TemporalExtent.<br>
+Movie SubClassOf providesDirectorRole some DirectorRole<br>
+Every `Movie` must provide at least one `DirectorRole`.
 
-4.   `MainDirector hasKeyDecision exactly 1 xsd:string`<br>
-      The MainDirector has exactly one directorial vision, represented as string.<br> 
+DirectorRole SubClassOf performsDirectorRole only Agent<br>
+The range of the relationship `performsDirectorRole` must be `Agent`.
 
-5.    `MainDirector has DirectorialVision exactly 1 xsd:string`<br>
-       MainDirector has exactly one directorial vision, represented as string. <br>
+performsDirectorRole some owl:Thing SubClassOf DirectorRole<br>
+If something performs a director role, it must be a `DirectorRole`.
 
-6.    `TechnicalDirector hasTechnicalChallenge min 1 xsd:string`<br>
-      The TechnicalDirector has at least one technical challenge, represented as string.<br>
+DirectorRole SubClassOf performsDirectorRole some Agent<br>
+Every `DirectorRole` must be performed by an `Agent`.
 
-7.    `TechnicalDirector hasTechnologyUsed min 1 xsd:string`<br>
-       The TechnicalDirector uses at least one type of technology, represented as string. <br>
+DirectorRole SubClassOf hasTemporalExtent only TemporalExtent<br>
+The range of the relationship `hasTemporalExtent` must be `TemporalExtent`.
 
-**Genere**<br>
+hasTemporalExtent some owl:Thing SubClassOf DirectorRole<br>
+If something has a temporal extent, it must be a `DirectorRole`.
 
-1.  `Genere hasTargetAudience exactly 1 xsd:string`<br>
-     The Genere has exactly one target audience, represented as string. <br>
-        ![genere](../schema-diagrams/Genere/Genere.jpg)
+DirectorRole SubClassOf hasTemporalExtent some TemporalExtent<br>
+Every `DirectorRole` must have a temporal extent specifying its associated time-related details.
 
-1.  `Genere hasTargetAudience exactly 1 xsd:string`<br>
-     The Genere has exactly one target audience, represented as string.<br> 
+MainDirector SubClassOf hasKeyDecision only xsd:String<br>
+The range of the relationship `hasKeyDecision` must be `xsd:String`.
 
+hasKeyDecision some owl:Thing SubClassOf MainDirector<br>
+If something has a key decision, it must be a `MainDirector`.
 
-2.  `Genere hasOrigin exactly 1 xsd:string`<br>
-     The Genere has exactly one origin, represented as string. <br>
-     
-3.  `Comedy subClassOf Genere`<br>
-     `Action subClassOf Genere`<br>
-     `Horror subClassOf Genere`<br>
-     Comedy,Action and Horror are subclasses of Genere.<br>
-     
-4.  `DarkComedy subClassOf Comedy`<br>
-    `Staire subClassOf Comedy`<br>
-    DarkComedy and Staire are subclass of Comedy<br>
+MainDirector SubClassOf hasKeyDecision some xsd:String<br>
+Every `MainDirector` must have key decisions represented as strings.
 
-5.  `MartialArts subClassOf Action`<br>
-    `Superhero subClassof Action`<br>
-     MartialArts and SuperHero are subclasses of Action.<br>
+MainDirector SubClassOf hasDirectorialVision only xsd:String<br>
+The range of the relationship `hasDirectorialVision` must be `xsd:String`.
 
-6.  `MonsterHorror subClassOf Horror`<br>
-     MonsterHorror is a subClass of Horror. <br>
+hasDirectorialVision some owl:Thing SubClassOf MainDirector<br>
+If something has a directorial vision, it must be a `MainDirector`.
+
+MainDirector SubClassOf hasDirectorialVision some xsd:String<br>
+Every `MainDirector` must have a directorial vision represented as a string.
+
+TechnicalDirector SubClassOf hasTechnologyUsed only xsd:String<br>
+The range of the relationship `hasTechnologyUsed` must be `xsd:String`.
+
+hasTechnologyUsed some owl:Thing SubClassOf TechnicalDirector<br>
+If something has technologies used, it must be a `TechnicalDirector`.
+
+TechnicalDirector SubClassOf hasTechnologyUsed some xsd:String<br>
+Every `TechnicalDirector` must have technologies used represented as strings.
+
+TechnicalDirector SubClassOf hasTechnicalChallenge only xsd:String<br>
+The range of the relationship `hasTechnicalChallenge` must be `xsd:String`.
+
+hasTechnicalChallenge some owl:Thing SubClassOf TechnicalDirector<br>
+If something has a technical challenge, it must be a `TechnicalDirector`.
+
+TechnicalDirector SubClassOf hasTechnicalChallenge some xsd:String<br>
+Every `TechnicalDirector` must have technical challenges represented as strings.
+
+MainDirector SubClassOf DirectorRole<br>
+A `MainDirector` is a subclass of `DirectorRole`.
+
+TechnicalDirector SubClassOf DirectorRole<br>
+A `TechnicalDirector` is a subclass of `DirectorRole`.
+
+MainDirector ⊓ TechnicalDirector ⊑ ⊥<br>
+`MainDirector` and `TechnicalDirector` are disjoint classes, meaning an entity cannot belong to both classes simultaneously.
+
+**Genre**<br>
+ ![genre](../schema-diagrams/Genere/Genere.jpg)
+
+Genre SubClassOf hasTargetAudience only xsd:String<br>
+The range of the relationship `hasTargetAudience` must be `xsd:String`.
+
+hasTargetAudience some owl:Thing SubClassOf Genre<br>
+If something has a target audience, it must be a `Genre`.
+
+Genre SubClassOf hasTargetAudience some xsd:String<br>
+Every `Genre` must have a target audience represented as a string.
+
+Genre SubClassOf hasOrigin only xsd:String<br>
+The range of the relationship `hasOrigin` must be `xsd:String`.
+
+hasOrigin some owl:Thing SubClassOf Genre<br>
+If something has an origin, it must be a `Genre`.
+
+Genre SubClassOf hasOrigin some xsd:String<br>
+Every `Genre` must have an origin represented as a string.
+
+Comedy SubClassOf Genre<br>
+A `Comedy` is a subclass of `Genre`.
+
+Action SubClassOf Genre<br>
+An `Action` is a subclass of `Genre`.
+
+Horror SubClassOf Genre<br>
+A `Horror` is a subclass of `Genre`.
+
+DarkComedy SubClassOf Comedy<br>
+`DarkComedy` is a subclass of `Comedy`.
+
+Satire SubClassOf Comedy<br>
+`Satire` is a subclass of `Comedy`.
+
+MartialArts SubClassOf Action<br>
+`MartialArts` is a subclass of `Action`.
+
+Superhero SubClassOf Action<br>
+`Superhero` is a subclass of `Action`.
+
+MonsterHorror SubClassOf Horror<br>
+`MonsterHorror` is a subclass of `Horror`.
+
+Slasher SubClassOf Horror<br>
+`Slasher` is a subclass of `Horror`.
+
+Comedy ⊓ Action ⊑ ⊥<br>
+`Comedy` and `Action` are disjoint classes, meaning an entity cannot belong to both classes simultaneously.
+
+Comedy ⊓ Horror ⊑ ⊥<br>
+`Comedy` and `Horror` are disjoint classes.
+
+Action ⊓ Horror ⊑ ⊥<br>
+`Action` and `Horror` are disjoint classes.
+
+DarkComedy ⊓ Satire ⊑ ⊥<br>
+`DarkComedy` and `Satire` are disjoint subclasses of `Comedy`.
+
+MartialArts ⊓ Superhero ⊑ ⊥<br>
+`MartialArts` and `Superhero` are disjoint subclasses of `Action`.
+
+MonsterHorror ⊓ Slasher ⊑ ⊥<br>
+`MonsterHorror` and `Slasher` are disjoint subclasses of `Horror`.
+
+Genre SubClassOf ≤1hasTargetAudience<br>
+Each `Genre` can have at most one `hasTargetAudience` relationship.
+
+Genre SubClassOf ≤1hasOrigin<br>
+Each `Genre` can have at most one `hasOrigin` relationship.
+
+Comedy SubClassOf hasTargetAudience some xsd:String<br>
+Every `Comedy` genre must have a target audience.
+
+Action SubClassOf hasOrigin some xsd:String<br>
+Every `Action` genre must have an origin.
+
+Horror SubClassOf hasTargetAudience some xsd:String<br>
+Every `Horror` genre must have a target audience.
+
 
 **GrossEarning**<br>
     ![grossEarning](../schema-diagrams/GrossEarning/grossEarning.jpg)
 
-1.  `GrossEarnings hasEarningValue exactly 1 EarningValue`<br>
-    The GrossEarnings has exactly one EarningValue. <br>
+GrossEarnings SubClassOf hasEarningsValue only EarningsValue<br>
+The range of the relationship `hasEarningsValue` must be `EarningsValue`.
 
-2.  `EarningsValue hasNumericValue exactly 1 xsd:int`<br>
-     The EarningValue has exactly one numeric value, represented as integer. <br>
+hasEarningsValue some owl:Thing SubClassOf GrossEarnings<br>
+If something has an earnings value, it must be a `GrossEarnings`.
 
-3.  `EarningValue hasCurrency exactly 1 currency`<br>
-     The EarningValue has exactly one currency. <br>
+GrossEarnings SubClassOf hasEarningsValue some EarningsValue<br>
+Every `GrossEarnings` must have at least one associated `EarningsValue`.
 
-4.  `GrossEarnings hasEarningsType exactly 1 EarningsType`<br>
-     The GrossEarnings has exactly one type of earnings.<br>
+GrossEarnings SubClassOf hasEarningsType only EarningsType<br>
+The range of the relationship `hasEarningsType` must be `EarningsType`.
+
+hasEarningsType some owl:Thing SubClassOf GrossEarnings<br>
+If something has an earnings type, it must be a `GrossEarnings`.
+
+GrossEarnings SubClassOf hasEarningsType some EarningsType<br>
+Every `GrossEarnings` must have an associated `EarningsType`.
+
+EarningsValue SubClassOf hasNumericValue only xsd:int<br>
+The range of the relationship `hasNumericValue` must be `xsd:int`.
+
+hasNumericValue some owl:Thing SubClassOf EarningsValue<br>
+If something has a numeric value, it must be an `EarningsValue`.
+
+EarningsValue SubClassOf hasNumericValue some xsd:int<br>
+Every `EarningsValue` must have a numeric value represented as an integer.
+
+EarningsValue SubClassOf hasCurrency only Currency<br>
+The range of the relationship `hasCurrency` must be `Currency`.
+
+hasCurrency some owl:Thing SubClassOf EarningsValue<br>
+If something has a currency, it must be an `EarningsValue`.
+
+EarningsValue SubClassOf hasCurrency some Currency<br>
+Every `EarningsValue` must have an associated `Currency`.
 
 **MovieRating**<br>
     ![grossEarning](../schema-diagrams/MovieRating/movieRating.png)
 
-1.  `MovieRatingObservation hasSimpleResult exactly 1 rdfs:NumericUserRatingValue`<br>
-    The MovieRatingObservation has exactly one simple result, represented as a numeric user rating value.<br>
+MovieRatingObservation SubClassOf observedProperty only Rating<br>
+The range of the relationship `observedProperty` must be `Rating`.
 
-2. `MovieRatingObservation observedProperty exactly 1 Rating`<br>
-    The MovieRatingObservation observes exactly one property, which is the Rating.<br>
+observedProperty some owl:Thing SubClassOf MovieRatingObservation<br>
+If something observes a property, it must be a `MovieRatingObservation`.
 
-3. `MovieRatingObservation hasResult exactly 1 RatingValue`  <br>
-    The MovieRatingObservation has exactly one result, represented by a RatingValue.<br>
+MovieRatingObservation SubClassOf observedProperty some Rating<br>
+Every `MovieRatingObservation` must observe at least one `Rating`.
 
-4. `MovieRatingObservation hasObservedMovie exactly 1 Movie`<br>
-    The MovieRatingObservation is associated with exactly one observed Movie.<br>
+MovieRatingObservation SubClassOf hasSimpleResult only rdfs:NumericUserRatingValue<br>
+The range of the relationship `hasSimpleResult` must be `rdfs:NumericUserRatingValue`.
 
-5. `MovieRatingObservation hasPhenomenonTime exactly 1 RatingDate`  <br> 
+hasSimpleResult some owl:Thing SubClassOf MovieRatingObservation<br>
+If something has a simple result, it must be a `MovieRatingObservation`.
 
-    The MovieRatingObservation has exactly one phenomenon time, represented by the RatingDate.<br>
+MovieRatingObservation SubClassOf hasSimpleResult some rdfs:NumericUserRatingValue<br>
+Every `MovieRatingObservation` must have a simple result represented as a numeric user rating value.
 
-6. `MovieRatingObservation hasResultTime exactly 1 RatingDate`<br>
-    The MovieRatingObservation has exactly one result time, also represented by the RatingDate.<br>
+MovieRatingObservation SubClassOf hasPhenomenonTime only RatingDate<br>
+The range of the relationship `hasPhenomenonTime` must be `RatingDate`.
 
-7.  `Platform subClassOf MovieRatingObservation`<br>
-    The Platform is a subclass of MovieRatingObservation, indicating that MovieRatingObservation can be further refined by Platform.<br>
+MovieRatingObservation SubClassOf hasResultTime only RatingDate<br>
+The range of the relationship `hasResultTime` must be `RatingDate`.
+
+hasPhenomenonTime some owl:Thing SubClassOf MovieRatingObservation<br>
+If something has a phenomenon time, it must be a `MovieRatingObservation`.
+
+hasResultTime some owl:Thing SubClassOf MovieRatingObservation<br>
+If something has a result time, it must be a `MovieRatingObservation`.
+
+MovieRatingObservation SubClassOf hasPhenomenonTime some RatingDate and hasResultTime some RatingDate<br>
+Every `MovieRatingObservation` must have a phenomenon time and a result time represented as a `RatingDate`.
+
+⊤ SubClassOf ≤1hasPhenomenonTime<br>
+Each `MovieRatingObservation` can have at most one `hasPhenomenonTime` relationship.
+
+MovieRatingObservation SubClassOf hasResult only RatingValue<br>
+The range of the relationship `hasResult` must be `RatingValue`.
+
+hasResult some owl:Thing SubClassOf MovieRatingObservation<br>
+If something has a result, it must be a `MovieRatingObservation`.
+
+MovieRatingObservation SubClassOf hasResult some RatingValue<br>
+Every `MovieRatingObservation` must have a result represented by a `RatingValue`.
+
+MovieRatingObservation SubClassOf hasObservedMovie only Movie<br>
+The range of the relationship `hasObservedMovie` must be `Movie`.
+
+hasObservedMovie some owl:Thing SubClassOf MovieRatingObservation<br>
+If something observes a movie, it must be a `MovieRatingObservation`.
+
+MovieRatingObservation SubClassOf hasObservedMovie some Movie<br>
+Every `MovieRatingObservation` must be associated with at least one observed `Movie`.
+
+Platform SubClassOf hasAPlatformName only xsd:String<br>
+The range of the relationship `hasAPlatformName` must be `xsd:String`.
+
+hasAPlatformName some owl:Thing SubClassOf Platform<br>
+If something has a platform name, it must be a `Platform`.
+
+Platform SubClassOf hasAPlatformName some xsd:String<br>
+Every `Platform` must have a name represented as a string.
+
 
 **ProducationCompany**<br>
     ![grossEarning](../schema-diagrams/ProductionCompany/ProductionCompanies.jpg)
 
-1.  `Movie providesProductionRole min 1 ProductionRole`<br>
-     The Movie provides at least one ProductionRole.<br>
+Movie SubClassOf providesProductionRole only ProductionRole<br>
+The range of the relationship `providesProductionRole` must be `ProductionRole`.
 
-2. `Agent performsAgentRole exactly 1 ProductionRole`<br>
-    The Agent performs exactly one ProductionRole.<br>
+providesProductionRole some owl:Thing SubClassOf Movie<br>
+If something provides a production role, it must be a `Movie`.
 
+Movie SubClassOf providesProductionRole some ProductionRole<br>
+Every `Movie` must provide at least one `ProductionRole`.
 
-3. `ProductionRole hasTemporalExtent exactly 1 ProductionPeriod` <br> 
-    The ProductionRole has exactly one temporal extent, represented by the ProductionPeriod.<br>
+ProductionRole SubClassOf hasTemporalExtent only ProductionPeriod<br>
+The range of the relationship `hasTemporalExtent` must be `ProductionPeriod`.
 
-4. `ExecutiveProducer hasFinancialContribution exactly 1 xsd:int`<br>
-    The ExecutiveProducer has exactly one financial contribution, represented as an integer.<br>
+hasTemporalExtent some owl:Thing SubClassOf ProductionRole<br>
+If something has a temporal extent, it must be a `ProductionRole`.
 
-5. `ExecutiveProducer hasCreativeControl exactly 1 xsd:string`   <br>
-    The ExecutiveProducer has exactly one creative control specification, represented as a string.<br>
+ProductionRole SubClassOf hasTemporalExtent some ProductionPeriod<br>
+Every `ProductionRole` must have a temporal extent specifying its associated `ProductionPeriod`.
 
-6.  `ExecutiveProducer hasContractTerms exactly 1 xsd:int`<br>
-    The ExecutiveProducer has exactly one contract terms specification, represented as an integer.<br>
+ProductionRole SubClassOf performedBy only Agent<br>
+The range of the relationship `performedBy` must be `Agent`.
 
-7. `Distribution hasRevenueSharePercentage exactly 1 xsd:string`<br>
-    The Distribution has exactly one revenue share percentage, represented as a string.<br>
+performedBy some owl:Thing SubClassOf ProductionRole<br>
+If something is performed by an agent, it must be a `ProductionRole`.
 
-8. `Distribution hasReleasePlatforms min 1 xsd:string`  <br>
-    The Distribution has at least one release platform, represented as a string.<br>
+ProductionRole SubClassOf performedBy some Agent<br>
+Every `ProductionRole` must be performed by an `Agent`.
 
-9. `Distribution hasDistributionRegion exactly 1 xsd:string`<br>
-    The Distribution has exactly one distribution region, represented as a string.<br>
+ExecutiveProducer SubClassOf hasFinancialContribution only xsd:int<br>
+The range of the relationship `hasFinancialContribution` must be `xsd:int`.
 
+hasFinancialContribution some owl:Thing SubClassOf ExecutiveProducer<br>
+If something has a financial contribution, it must be an `ExecutiveProducer`.
+
+ExecutiveProducer SubClassOf hasFinancialContribution some xsd:int<br>
+Every `ExecutiveProducer` must have a financial contribution represented as an integer.
+
+ExecutiveProducer SubClassOf hasCreativeControl only xsd:String<br>
+The range of the relationship `hasCreativeControl` must be `xsd:String`.
+
+hasCreativeControl some owl:Thing SubClassOf ExecutiveProducer<br>
+If something has creative control, it must be an `ExecutiveProducer`.
+
+ExecutiveProducer SubClassOf hasCreativeControl some xsd:String<br>
+Every `ExecutiveProducer` must have creative control represented as a string.
+
+ExecutiveProducer SubClassOf hasContractTerms only xsd:int<br>
+The range of the relationship `hasContractTerms` must be `xsd:int`.
+
+hasContractTerms some owl:Thing SubClassOf ExecutiveProducer<br>
+If something has contract terms, it must be an `ExecutiveProducer`.
+
+ExecutiveProducer SubClassOf hasContractTerms some xsd:int<br>
+Every `ExecutiveProducer` must have contract terms represented as an integer.
+
+Distribution SubClassOf hasRevenueSharePercentage only xsd:int<br>
+The range of the relationship `hasRevenueSharePercentage` must be `xsd:int`.
+
+hasRevenueSharePercentage some owl:Thing SubClassOf Distribution<br>
+If something has a revenue share percentage, it must be a `Distribution`.
+
+Distribution SubClassOf hasRevenueSharePercentage some xsd:int<br>
+Every `Distribution` must have a revenue share percentage represented as an integer.
+
+Distribution SubClassOf hasDistributionRegion only xsd:String<br>
+The range of the relationship `hasDistributionRegion` must be `xsd:String`.
+
+hasDistributionRegion some owl:Thing SubClassOf Distribution<br>
+If something has a distribution region, it must be a `Distribution`.
+
+Distribution SubClassOf hasDistributionRegion some xsd:String<br>
+Every `Distribution` must have a distribution region represented as a string.
+
+Distribution SubClassOf hasReleasePlatforms only xsd:String<br>
+The range of the relationship `hasReleasePlatforms` must be `xsd:String`.
+
+hasReleasePlatforms some owl:Thing SubClassOf Distribution<br>
+If something has release platforms, it must be a `Distribution`.
+
+Distribution SubClassOf hasReleasePlatforms some xsd:String<br>
+Every `Distribution` must have release platforms represented as a string.
 
 **InflationRate**<br>
     ![InflationRate](../schema-diagrams/InflationRate/inflationRate.jpg)
 
-1.  `InflationObservation contains exactly 1 InflationTimeExtent`<br>
-    The InflationObservation contains exactly one InflationTimeExtent.<br>
+InflationObservation SubClassOf contains only InflationTimeExtent<br>
+The range of the relationship `contains` must be `InflationTimeExtent`.
 
-2. `ObservationPeriod hasDuration exactly 1 xsd:int`<br>
-    The ObservationPeriod has exactly one duration, represented as an integer.<br>
+contains some owl:Thing SubClassOf InflationObservation<br>
+If something contains an inflation time extent, it must be an `InflationObservation`.
 
-3. `ObservationPeriod startsFrom exactly 1 ReleaseDate`  <br>
-    The ObservationPeriod has exactly one start date, represented by ReleaseDate.<br>
+InflationObservation SubClassOf contains some InflationTimeExtent<br>
+Every `InflationObservation` must contain at least one `InflationTimeExtent`.
 
-4. `ObservationPeriod endsAt exactly 1 ReleaseDate`<br>
-    The ObservationPeriod has exactly one end date, represented by ReleaseDate.<br>
+InflationTimeExtent SubClassOf hasDuration only ObservationPeriod<br>
+The range of the relationship `hasDuration` must be `ObservationPeriod`.
 
-5. `InflationTimeExtent hasValue exactly 1 InflationRateValue`   <br>
-    The InflationTimeExtent has exactly one inflation rate value.<br>
+hasDuration some owl:Thing SubClassOf InflationTimeExtent<br>
+If something has a duration, it must be an `InflationTimeExtent`.
 
-6.  `InflationRateValue hasPercentage exactly 1 xsd:double`<br>
-    The InflationRateValue has exactly one percentage value, represented as a double.<br>
+InflationTimeExtent SubClassOf hasDuration some ObservationPeriod<br>
+Every `InflationTimeExtent` must have a duration represented by an `ObservationPeriod`.
 
-7. `ReleaseDate hasReferenceSystem exactly 1 CurrencyReferenceSystem`<br>
-    The ReleaseDate has exactly one reference system, represented by CurrencyReferenceSystem.<br>
+ObservationPeriod SubClassOf startsFrom only ReleaseDate<br>
+The range of the relationship `startsFrom` must be `ReleaseDate`.
+
+ObservationPeriod SubClassOf endsAt only ReleaseDate<br>
+The range of the relationship `endsAt` must be `ReleaseDate`.
+
+startsFrom some owl:Thing SubClassOf ObservationPeriod<br>
+If something has a starting point, it must be an `ObservationPeriod`.
+
+endsAt some owl:Thing SubClassOf ObservationPeriod<br>
+If something has an ending point, it must be an `ObservationPeriod`.
+
+ObservationPeriod SubClassOf startsFrom some ReleaseDate and endsAt some ReleaseDate<br>
+Every `ObservationPeriod` must have a starting and an ending point represented by `ReleaseDate`.
+
+InflationTimeExtent SubClassOf hasValue only InflationRateValue<br>
+The range of the relationship `hasValue` must be `InflationRateValue`.
+
+hasValue some owl:Thing SubClassOf InflationTimeExtent<br>
+If something has a value, it must be an `InflationTimeExtent`.
+
+InflationTimeExtent SubClassOf hasValue some InflationRateValue<br>
+Every `InflationTimeExtent` must have a value represented by an `InflationRateValue`.
+
+InflationRateValue SubClassOf hasPercentage only xsd:double<br>
+The range of the relationship `hasPercentage` must be `xsd:double`.
+
+hasPercentage some owl:Thing SubClassOf InflationRateValue<br>
+If something has a percentage, it must be an `InflationRateValue`.
+
+InflationRateValue SubClassOf hasPercentage some xsd:double<br>
+Every `InflationRateValue` must have a percentage represented as a double.
+
+ReleaseDate SubClassOf hasReferenceSystem only CurrencyReferenceSystem<br>
+The range of the relationship `hasReferenceSystem` must be `CurrencyReferenceSystem`.
+
+hasReferenceSystem some owl:Thing SubClassOf ReleaseDate<br>
+If something has a reference system, it must be a `ReleaseDate`.
+
+ReleaseDate SubClassOf hasReferenceSystem some CurrencyReferenceSystem<br>
+Every `ReleaseDate` must have a reference system associated with a `CurrencyReferenceSystem`.
+
 
 **UserRating**<br>
     ![grossEarning](../schema-diagrams/UserRating/userRatings.jpg)
 
-1.  `UserRatingObservation hasSimpleResult exactly 1 rdfs:NumericRatingValue`<br>
-    The UserRatingObservation has exactly one simple result, represented by a NumericRatingValue.<br>
+UserRatingObservation SubClassOf observedProperty only RatingType<br>
+The range of the relationship `observedProperty` must be `RatingType`.
 
-2. `UserRatingObservation observedProperty exactly 1 RatingType`<br>
-    The UserRatingObservation observes exactly one property, which is a RatingType.<br>
+observedProperty some owl:Thing SubClassOf UserRatingObservation<br>
+If something has an `observedProperty`, it must be a `UserRatingObservation`.
 
-3. `UserRatingObservation hasResult exactly 1 RatingValue`  <br>
-    The UserRatingObservation has exactly one result, represented by a RatingValue.<br>
+UserRatingObservation SubClassOf observedProperty some RatingType<br>
+Every `UserRatingObservation` must observe at least one `RatingType`.
 
-4. `UserRatingObservation hasObservedMovie exactly 1 Movie`<br>
-    The UserRatingObservation is associated with exactly one observed Movie.<br>
+UserRatingObservation SubClassOf hasSimpleResult only rdfs:NumericRatingValue<br>
+The range of the relationship `hasSimpleResult` must be `rdfs:NumericRatingValue`.
 
-5. `UserRatingObservation hasResultTime exactly 1 RatingDate`   <br>
-    The UserRatingObservation has exactly one result time, represented by a RatingDate.<br>
+hasSimpleResult some owl:Thing SubClassOf UserRatingObservation<br>
+If something has a `hasSimpleResult` relationship, it must be a `UserRatingObservation`.
 
-6.  `Platform hasAPlatformName exactly 1 xsd:string`<br>
-   The Platform has exactly one name, represented as a string.<br>
+UserRatingObservation SubClassOf hasSimpleResult some rdfs:NumericRatingValue<br>
+Every `UserRatingObservation` must have a simple result as a numeric rating value.
 
-7. `RatingType hasADescription exactly 1 xsd:string`<br>
-    The RatingType has exactly one description, represented as a string.<br>
+UserRatingObservation SubClassOf hasResultTime only RatingDate<br>
+The range of the relationship `hasResultTime` must be `RatingDate`.
 
-7. `RatingType maxScale exactly 1 xsd:int`<br>
-    The RatingType has exactly one maximum scale value, represented as an integer.<br>
+hasResultTime some owl:Thing SubClassOf UserRatingObservation<br>
+If something has a `hasResultTime` relationship, it must be a `UserRatingObservation`.
+
+UserRatingObservation SubClassOf hasResultTime some RatingDate<br>
+Every `UserRatingObservation` must have a result time as a `RatingDate`.
+
+UserRatingObservation SubClassOf hasResultTime max 1 RatingDate<br>
+Each `UserRatingObservation` can have at most one `hasResultTime` relationship.
+
+UserRatingObservation SubClassOf hasResult only RatingValue<br>
+The range of the relationship `hasResult` must be `RatingValue`.
+
+hasResult some owl:Thing SubClassOf UserRatingObservation<br>
+If something has a `hasResult` relationship, it must be a `UserRatingObservation`.
+
+UserRatingObservation SubClassOf hasResult some RatingValue<br>
+Every `UserRatingObservation` must have a result represented by a `RatingValue`.
+
+UserRatingObservation SubClassOf hasObservedMovie only Movie<br>
+The range of the relationship `hasObservedMovie` must be `Movie`.
+
+hasObservedMovie some owl:Thing SubClassOf UserRatingObservation<br>
+If something has a `hasObservedMovie` relationship, it must be a `UserRatingObservation`.
+
+UserRatingObservation SubClassOf hasObservedMovie some Movie<br>
+Every `UserRatingObservation` must observe at least one `Movie`.
+
+Platform SubClassOf hasAPlatformName only xsd:String<br>
+The range of the relationship `hasAPlatformName` must be `xsd:String`.
+
+hasAPlatformName some owl:Thing SubClassOf Platform<br>
+If something has a `hasAPlatformName` relationship, it must be a `Platform`.
+
+Platform SubClassOf hasAPlatformName some xsd:String<br>
+Every `Platform` must have a platform name represented as a string.
+
+RatingType SubClassOf hasADescription only xsd:String<br>
+The range of the relationship `hasADescription` must be `xsd:String`.
+
+hasADescription some owl:Thing SubClassOf RatingType<br>
+If something has a `hasADescription` relationship, it must be a `RatingType`.
+
+RatingType SubClassOf hasADescription some xsd:String<br>
+Every `RatingType` must have a description represented as a string.
+
+RatingType SubClassOf hasMaxScale only xsd:int<br>
+The range of the relationship `hasMaxScale` must be `xsd:int`.
+
+hasMaxScale some owl:Thing SubClassOf RatingType<br>
+If something has a `hasMaxScale` relationship, it must be a `RatingType`.
+
+RatingType SubClassOf hasMaxScale some xsd:int<br>
+Every `RatingType` must have a maximum scale represented as an integer.
+
 
 
 **Vote**<br>
     ![grossEarning](../schema-diagrams/Vote/vote.jpg)
 
-1.  `VoteObservation hasSimpleResult exactly 1 rdfs:NumericVoteValue`<br>
-    The VoteObservation has exactly one simple result, represented by a NumericVoteValue.<br>
+`VoteObservation SubClassOf observedProperty only VoteType`<br>
+The range of the relationship `observedProperty` must be `VoteType`.<br>
 
-2. `VoteObservation observedProperty exactly 1 VoteType`<br>
-    The VoteObservation observes exactly one property, which is a VoteType.<br>
+`observedProperty some owl:Thing SubClassOf VoteObservation`<br>
+If something has an observed property, it must be a `VoteObservation`.<br>
 
-3. `VoteObservation hasResult exactly 1 VoteCount`  <br>
-    The VoteObservation has exactly one result, represented by a VoteCount.<br>
+`VoteObservation SubClassOf observedProperty some VoteType`<br>
+Every `VoteObservation` must observe at least one `VoteType`.<br>
 
-4. `VoteObservation hasFeatureOfInterest exactly 1 Movie`<br>
-    The VoteObservation has exactly one feature of interest, which is a Movie.<br>
+`VoteObservation SubClassOf hasSimpleResult only rdfs:NumericVoteValue`<br>
+The range of the relationship `hasSimpleResult` must be `rdfs:NumericVoteValue`.<br>
 
-5. `VoteObservation hasPhenomenonTime exactly 1 VoteDate`   <br>
-    The VoteObservation has exactly one phenomenon time, represented by a VoteDate.<br>
+`hasSimpleResult some owl:Thing SubClassOf VoteObservation`<br>
+If something has a simple result, it must be a `VoteObservation`.<br>
 
-6.  `Platform hasAPlatformName exactly 1 xsd:string`<br>
-   The Platform has exactly one platform name, represented as a string.<br>
+`VoteObservation SubClassOf hasSimpleResult some rdfs:NumericVoteValue`<br>
+Every `VoteObservation` must have a simple result.<br>
 
-7. `VoteType hasADescription exactly 1 xsd:string`<br>
-    The VoteType has exactly one description, represented as a string.<br>
+`VoteObservation SubClassOf hasPhenomenonTime only VoteDate`<br>
+The range of the relationship `hasPhenomenonTime` must be `VoteDate`.<br>
 
-8. `VoteType hasAScale exactly 1 xsd:int`<br>
-    The VoteType has exactly one scale, represented as an integer.<br>
+`hasPhenomenonTime some owl:Thing SubClassOf VoteObservation`<br>
+If something has a phenomenon time, it must be a `VoteObservation`.<br>
+
+`VoteObservation SubClassOf hasPhenomenonTime some VoteDate`<br>
+Every `VoteObservation` must have a phenomenon time.<br>
+
+`VoteObservation SubClassOf hasPhenomenonTime max 1 VoteDate`<br>
+Each `VoteObservation` can have at most one phenomenon time.<br>
+
+`VoteObservation SubClassOf hasResult only VoteCount`<br>
+The range of the relationship `hasResult` must be `VoteCount`.<br>
+
+`hasResult some owl:Thing SubClassOf VoteObservation`<br>
+If something has a result, it must be a `VoteObservation`.<br>
+
+`VoteObservation SubClassOf hasResult some VoteCount`<br>
+Every `VoteObservation` must have a result.<br>
+
+`VoteObservation SubClassOf hasFeatureOfInterest only Movie`<br>
+The range of the relationship `hasFeatureOfInterest` must be `Movie`.<br>
+
+`hasFeatureOfInterest some owl:Thing SubClassOf VoteObservation`<br>
+If something has a feature of interest, it must be a `VoteObservation`.<br>
+
+`VoteObservation SubClassOf hasFeatureOfInterest some Movie`<br>
+Every `VoteObservation` must have a feature of interest.<br>
+
+`Platform SubClassOf hasAPlatformName only xsd:String`<br>
+The range of the relationship `hasAPlatformName` must be `xsd:String`.<br>
+
+`hasAPlatformName some owl:Thing SubClassOf Platform`<br>
+If something has a platform name, it must be a `Platform`.<br>
+
+`Platform SubClassOf hasAPlatformName some xsd:String`<br>
+Every `Platform` must have a platform name.<br>
+
+`VoteType SubClassOf hasADescription only xsd:String`<br>
+<br>
+The range of the relationship `hasADescription` must be `xsd:String`.<br>
+
+`hasADescription some owl:Thing SubClassOf VoteType`<br>
+If something has a description, it must be a `VoteType`.<br>
+
+`VoteType SubClassOf hasADescription some xsd:String`<br>
+Every `VoteType` must have a description.<br>
+
+`VoteType SubClassOf hasAScale only xsd:int`<br>
+The range of the relationship `hasAScale` must be `xsd:int`.<br>
+
+`hasAScale some owl:Thing SubClassOf VoteType`<br>
+If something has a scale, it must be a `VoteType`.<br>
+
+`VoteType SubClassOf hasAScale some xsd:int`<br>
+Every `VoteType` must have a scale.<br>
+
