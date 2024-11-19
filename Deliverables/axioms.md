@@ -40,7 +40,7 @@
     Every QuantityValue has exactly one QuantityKind<br>
 
 3.  `QuantityValue hasUnit exactly 1 Unit`<br>
-     Every QuantityValue has exactly one Unit. <br>
+     Every QuantityValue has exactly one Unit.<br> 
     
 4.  `QuantityValue hasNumericValue exactly 1 xsd:double`<br>
      Every QuantityValue has exactly one numeric value of type xsd:double. <br>
@@ -49,7 +49,9 @@
     ![country](../schema-diagrams/Country/country.jpg)
 
 1.  `ProductionCompany basedIn min 1 Place`<br>
-     The Production Company is based in at least one Place.<br> 
+
+     The Production Company is based in at least one Place. <br>
+
 
 2.  `Movie hasFilmingLocation min 1 Place`<br>
      The Movie has at least one filming location. <br>
@@ -76,7 +78,7 @@
      The DirectorRole has exactly one TemporalExtent.<br>
 
 4.   `MainDirector hasKeyDecision exactly 1 xsd:string`<br>
-      The MainDirector has exactly one directorial vision, represented as string. <br>
+      The MainDirector has exactly one directorial vision, represented as string.<br> 
 
 5.    `MainDirector has DirectorialVision exactly 1 xsd:string`<br>
        MainDirector has exactly one directorial vision, represented as string. <br>
@@ -88,10 +90,14 @@
        The TechnicalDirector uses at least one type of technology, represented as string. <br>
 
 **Genere**<br>
+
+1.  `Genere hasTargetAudience exactly 1 xsd:string`<br>
+     The Genere has exactly one target audience, represented as string. <br>
         ![genere](../schema-diagrams/Genere/Genere.jpg)
 
 1.  `Genere hasTargetAudience exactly 1 xsd:string`<br>
      The Genere has exactly one target audience, represented as string.<br> 
+
 
 2.  `Genere hasOrigin exactly 1 xsd:string`<br>
      The Genere has exactly one origin, represented as string. <br>
@@ -142,7 +148,8 @@
 4. `MovieRatingObservation hasObservedMovie exactly 1 Movie`<br>
     The MovieRatingObservation is associated with exactly one observed Movie.<br>
 
-5. `MovieRatingObservation hasPhenomenonTime exactly 1 RatingDate`   <br>
+5. `MovieRatingObservation hasPhenomenonTime exactly 1 RatingDate`  <br> 
+
     The MovieRatingObservation has exactly one phenomenon time, represented by the RatingDate.<br>
 
 6. `MovieRatingObservation hasResultTime exactly 1 RatingDate`<br>
@@ -160,7 +167,8 @@
 2. `Agent performsAgentRole exactly 1 ProductionRole`<br>
     The Agent performs exactly one ProductionRole.<br>
 
-3. `ProductionRole hasTemporalExtent exactly 1 ProductionPeriod`  <br>
+
+3. `ProductionRole hasTemporalExtent exactly 1 ProductionPeriod` <br> 
     The ProductionRole has exactly one temporal extent, represented by the ProductionPeriod.<br>
 
 4. `ExecutiveProducer hasFinancialContribution exactly 1 xsd:int`<br>
