@@ -306,7 +306,7 @@ EarningsValue SubClassOf hasCurrency some Currency<br>
 Every `EarningsValue` must have an associated `Currency`.
 
 **MovieRating**<br>
-    ![grossEarning](../schema-diagrams/MovieRating/movieRating.png)
+    ![movieRating](../schema-diagrams/MovieRating/movieRating.jpg)
 
 MovieRatingObservation SubClassOf observedProperty only Rating<br>
 The range of the relationship `observedProperty` must be `Rating`.
