@@ -19,14 +19,13 @@ Overall, the knowledge graph allows for a more detailed exploration of relations
 •	Which <b>production companies</b> have the highest <b>average gross earnings</b> across all their movies?<br>
 •	Which <b>countries</b> produce the <b>highest-grossing movies</b>?<br>
 •	Which actors have worked in the highest number of <b>high-budget movies</b>, and how did those movies perform in terms of <b>ratings</b>?<br>
-•	How do movies with high user <b>votes</b> perform in terms of <b>gross earnings</b>?<br>
-•	What is the inflation rate when the movie was released in the date 2019? <br>
-•	What is the unemployment rate when the movie was released in the date 2019?<br>
+•	How has the inflation rate in each country impacted movie production budgets in that country over time</b>?<br>
+•	Is there a relationship between countries with high inflation rates and the gross earnings or profitability of movies produced in those countries</b>?<br>
+•	Do changes in inflation affect the average vote or ratings of movies released in those countries over the same period</b>?<br>
 
 
 
 
-1. How has the inflation rate in each country impacted movie production budgets in that country over time?
-2. Is there a relationship between countries with high inflation rates and the gross earnings or profitability of movies produced in those countries?
-3. Do changes in inflation affect the average vote or ratings of movies released in those countries over the same period?
+
+
 
