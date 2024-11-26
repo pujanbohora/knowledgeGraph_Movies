@@ -175,7 +175,7 @@
 
 
 **Director**<br>
-    ![director](../schema-diagrams/Director/Director.jpg)
+    ![director](../schema-diagrams/Director/director.jpg)
 
 ### Axioms
 1. Movie → providesDirectorRole → DirectorRole
@@ -239,7 +239,7 @@
           MainDirector and TechnicalDirector are disjoint classes, meaning an entity cannot belong to both classes simultaneously.
 
 **Genre**<br>
- ![genre](../schema-diagrams/Genere/Genere.jpg)
+ ![genre](../schema-diagrams/Genere/genere.jpg)
 
 ### Axioms
 1. Genre → hasTargetAudience → xsd
@@ -404,15 +404,15 @@
      * `MovieRatingObservation SubClassOf hasObservedMovie some Movie` <br />
           Every MovieRatingObservation must be associated with at least one observed Movie.
 
-Platform SubClassOf hasAPlatformName only xsd:String<br>
-The range of the relationship `hasAPlatformName` must be `xsd:String`.
+9.   * `Platform SubClassOf hasAPlatformName only xsd:String`<br>
+          The range of the relationship `hasAPlatformName` must be `xsd:String`.
 
-Platform SubClassOf hasAPlatformName some xsd:String<br>
-Every `Platform` must have a name represented as a string.
+10.  * `Platform SubClassOf hasAPlatformName some xsd:String`<br>
+          Every `Platform` must have a name represented as a string.
 
 
 **ProducationCompany**<br>
-    ![grossEarning](../schema-diagrams/ProductionCompany/ProductionCompanies.jpg)
+    ![grossEarning](../schema-diagrams/ProductionCompany/productionCompanies.jpg)
 
 ### Axioms
 1. Movie → providesProductionRole → ProductionRole
@@ -493,8 +493,8 @@ Every `Platform` must have a name represented as a string.
      * `InflationTimeExtent SubClassOf hasDuration only ObservationPeriod` <br />
           The range of the relationship hasDuration must be ObservationPeriod.
 
-InflationTimeExtent SubClassOf hasDuration some ObservationPeriod<br>
-Every `InflationTimeExtent` must have a duration represented by an `ObservationPeriod`.
+3.   *  `InflationTimeExtent SubClassOf hasDuration some ObservationPeriod`<br>
+          Every `InflationTimeExtent` must have a duration represented by an `ObservationPeriod`.
 
 3. ObservationPeriod → startsFrom → ReleaseDate
      * `ObservationPeriod SubClassOf startsFrom only ReleaseDate` <br />
@@ -504,14 +504,14 @@ Every `InflationTimeExtent` must have a duration represented by an `ObservationP
      * `ObservationPeriod SubClassOf endsAt only ReleaseDate` <br />
           The range of the relationship endsAt must be ReleaseDate.
 
-ObservationPeriod SubClassOf startsFrom some ReleaseDate and endsAt some ReleaseDate<br>
-Every `ObservationPeriod` must have a starting and an ending point represented by `ReleaseDate`.
+     *  `ObservationPeriod SubClassOf startsFrom some ReleaseDate and endsAt some ReleaseDate`<br>
+          Every `ObservationPeriod` must have a starting and an ending point represented by `ReleaseDate`.
 
-InflationTimeExtent SubClassOf hasValue only InflationRateValue<br>
-The range of the relationship `hasValue` must be `InflationRateValue`.
+     *  `InflationTimeExtent SubClassOf hasValue only InflationRateValue`<br>
+          The range of the relationship `hasValue` must be `InflationRateValue`.
 
-InflationTimeExtent SubClassOf hasValue some InflationRateValue<br>
-Every `InflationTimeExtent` must have a value represented by an `InflationRateValue`.
+     *  `InflationTimeExtent SubClassOf hasValue some InflationRateValue`<br>
+          Every `InflationTimeExtent` must have a value represented by an `InflationRateValue`.
 
 6. InflationRateValue → hasPercentage → xsd
      * `InflationRateValue SubClassOf hasPercentage only xsd:double` <br />
