@@ -24,7 +24,9 @@ Incorporating inflation into these analyses adds a critical economic dimension. 
 10. Do changes in inflation affect the average vote or ratings of movies released in those countries over the same period?
 
 ### Integrated Datasets
-
+1. ![dataset](../dataset/movie.csv)
+2. ![dataset](../dataset/movie_earning.csv)
+3. ![dataset](../dataset/world_gdp_data.csv)
 
 ## Modules
 
