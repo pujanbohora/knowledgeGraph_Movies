@@ -775,6 +775,16 @@
      * `Movie SubClassOf hasFilmingLocation some Place` <br />
           Every Movie must have at least one associated Place.
 
+12. Place → hasInflation → InflationObservation
+     * `Place SubClassOf hasInflation only InflationObservation` <br />
+          The range of the relationship hasInflation must be InflationObservation.
+
+     * `Place SubClassOf hasInflation some InflationObservation` <br />
+          Every Place must have atleast one associated InflationObservation.
+
+     * `InflationObservation SubClassOf associatedWith.Place` <br />
+          Every InflationObservation must be associated with at least one Place.
+
      
        
 
