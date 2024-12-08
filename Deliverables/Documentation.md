@@ -735,3 +735,294 @@ Inflation impacts production costs, ticket prices, and revenue over time, affect
 
      * `ReleaseDate SubClassOf hasReferenceSystem some CurrencyReferenceSystem` <br />
           Every ReleaseDate must have a reference system associated with a CurrencyReferenceSystem.
+
+
+### Validation
+
+**Competency Question :** "What are the most common genres for movies featuring a specific actor?"
+
+**Bridged Datasets :** movie.csv, movie_earning.csv
+
+**SPARQL Query :**
+```
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX movies: <http://example.org/movies/>
+PREFIX earnings: <http://example.org/earnings/>
+PREFIX inflation: <http://example.org/inflation/>
+
+#CQ1
+SELECT ?genre (COUNT(?movie) AS ?movieCount)
+WHERE {
+  ?movie a movies:Movie ;
+         movies:hasActor movies:Actor.Andrew_Hawley ;
+         movies:hasGenre ?genre .
+  		 
+}
+GROUP BY ?genre
+ORDER BY DESC(?movieCount)
+LIMIT 5
+```
+
+**Output :**
+
+![CQ1](https://github.com/user-attachments/assets/8ef1a6a8-15b3-4a57-a903-840c3151f0a2)
+
+**Competency Question 2 :** "Which actors have appeared in the most movies directed by specific directors?"
+
+**Bridged Datasets :** movie.csv, movie_earning.csv
+
+**SPARQL Query :**
+```
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX movies: <http://example.org/movies/>
+PREFIX earnings: <http://example.org/earnings/>
+PREFIX inflation: <http://example.org/inflation/>
+SELECT ?actor (COUNT(?movie) AS ?movieCount)
+WHERE {
+  ?movie a movies:Movie ;
+         movies:hasDirector movies:Director.Christopher_Nolan ; 
+         movies:hasActor ?actor .
+}
+GROUP BY ?actor
+ORDER BY DESC(?movieCount)
+LIMIT 10
+```
+
+**Output :**
+
+![CQ2](https://github.com/user-attachments/assets/7824493c-b4b7-407c-b1e5-a4318c420a77)
+
+**Competency Question 3 :** "What is the correlation between a movie's budget and its gross earnings over different decades?"
+
+**Bridged Datasets :** movie.csv, movie_earning.csv
+
+**SPARQL Quesry :** 
+```
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX movies: <http://example.org/movies/>
+PREFIX earnings: <http://example.org/earnings/>
+PREFIX inflation: <http://example.org/inflation/>
+SELECT ?decade (AVG(xsd:float(?budget)) AS ?averageBudget) (AVG(xsd:float(?gross_earning)) AS ?averageGrossEarnings)
+WHERE {
+  ?movie a movies:Movie ;
+         movies:year ?year ;
+         earnings:budget ?budget ;
+         earnings:gross_earning ?gross_earning .
+  BIND (FLOOR(xsd:integer(?year) / 10) * 10 AS ?decade)
+}
+GROUP BY ?decade
+ORDER BY ?decade
+```
+
+**Output :**
+
+![CQ3](https://github.com/user-attachments/assets/6c6d10f0-d3e2-4a8d-94ad-f2dc3d1a4bc5)
+
+**Competency Question 4 :** "Which directors have the highest average movie ratings, and how many votes have those movies received?"
+
+**Bridged Datasets :** movie.csv, movie_earning.csv
+
+**SPARQL Query :**
+```
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX movies: <http://example.org/movies/>
+PREFIX earnings: <http://example.org/earnings/>
+PREFIX inflation: <http://example.org/inflation/>
+SELECT ?director (AVG(xsd:float(?rating)) AS ?averageRating) (SUM(xsd:integer(?votes)) AS ?totalVotes)
+WHERE {
+  ?movie a movies:Movie ;
+         movies:hasDirector ?director ;
+         movies:avg_vote ?rating ;
+         movies:votes ?votes .
+}
+GROUP BY ?director
+ORDER BY DESC(?averageRating)
+LIMIT 10
+```
+
+**Output :**
+
+![CQ4](https://github.com/user-attachments/assets/72dd805c-905f-4eb0-a075-5b3398ba054a)
+
+**Competency Question 5 :** "Which production companies have the highest average gross earnings across all their movies?"
+
+**Bridged Datasets :** movie.csv, movie_earning.csv
+
+**SPARQL Query :**
+```
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX movies: <http://example.org/movies/>
+PREFIX earnings: <http://example.org/earnings/>
+PREFIX inflation: <http://example.org/inflation/>
+SELECT ?company (AVG(xsd:float(?gross_earning)) AS ?averageGrossEarnings)
+WHERE {
+  ?movie a earnings:Movie ;
+         earnings:company ?company ;
+         earnings:gross_earning ?gross_earning .
+}
+GROUP BY ?company
+ORDER BY DESC(?averageGrossEarnings)
+LIMIT 10
+```
+
+**Output :**
+
+![CQ5](https://github.com/user-attachments/assets/fe95cf33-8e06-4665-93f5-a6e8ed1038a9)
+
+**Competency Question 6 :** "Which countries produce the highest-grossing movies?"
+
+**Bridged Datasets :** movie.csv, movie_earning.csv
+
+**SPARQL Query :**
+```
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX movies: <http://example.org/movies/>
+PREFIX earnings: <http://example.org/earnings/>
+PREFIX inflation: <http://example.org/inflation/>
+SELECT ?country (SUM(xsd:float(?gross_earning)) AS ?totalGrossEarnings)
+WHERE {
+  ?movie a movies:Movie ;
+         movies:country ?country ;
+         earnings:gross_earning ?gross_earning .
+}
+GROUP BY ?country
+ORDER BY DESC(?totalGrossEarnings)
+LIMIT 10
+```
+
+**Output :**
+
+![CQ6](https://github.com/user-attachments/assets/f0148cf7-5cf2-4cc2-8256-ec39edbe529d)
+
+**Competency Question 7 :** "Which actors have worked in the highest number of high-budget movies, and how did those movies perform in terms of ratings?"
+
+**Bridged Datasets :** movie.csv, movie_earning.csv
+
+**SPARQL Query :** 
+```
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX movies: <http://example.org/movies/>
+PREFIX earnings: <http://example.org/earnings/>
+PREFIX inflation: <http://example.org/inflation/>
+SELECT ?actor (COUNT(?movie) AS ?highBudgetMovies) (AVG(xsd:float(?rating)) AS ?averageRating)
+WHERE {
+  ?movie a movies:Movie ;
+         movies:hasActor ?actor ;
+         earnings:budget ?budget ;
+         movies:avg_vote ?rating .
+  FILTER(xsd:float(?budget) > 10000000)  # Define high-budget threshold
+}
+GROUP BY ?actor
+ORDER BY DESC(?highBudgetMovies)
+LIMIT 10
+```
+
+**Output :** 
+
+![CQ7](https://github.com/user-attachments/assets/12b3610c-ab94-4ade-abc1-3e1d2dbed629)
+
+**Competency Question 8 :** "How has the inflation rate in each country impacted movie production budgets in that country over time?"
+
+**Bridged Datasets :** movie.csv, movie_earning.csv, world_gdp_data.csv
+
+**SPARQL Query :**
+```
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX movies: <http://example.org/movies/>
+PREFIX earnings: <http://example.org/earnings/>
+PREFIX inflation: <http://example.org/inflation/>
+SELECT ?country ?year (AVG(xsd:float(?budget)) AS ?averageBudget) (AVG(xsd:float(?inflationRate)) AS ?averageInflationRate)
+WHERE {
+  ?movie a movies:Movie ;
+         movies:country ?country ;
+         movies:year ?year ;
+         earnings:budget ?budget .
+
+  # Handle inflation rate specifically for 2019
+  OPTIONAL {
+    ?country inflation:2019 ?inflationRate .
+    FILTER(?year = 2019)
+  }
+}
+GROUP BY ?country ?year
+HAVING (?year = 2019)
+ORDER BY ?country
+```
+
+**Output :**
+
+![CQ8](https://github.com/user-attachments/assets/564266a0-5fce-46ff-85e6-d3a083f8405c)
+
+**Competency Question 9 :** "Is there a relationship between countries with high inflation rates and the gross earnings or profitability of movies produced in those countries?"
+
+**Bridged Datasets :** movie.csv, movie_earning.csv, world_gdp_data.csv
+
+**SPARQL Query :**
+```
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX movies: <http://example.org/movies/>
+PREFIX earnings: <http://example.org/earnings/>
+PREFIX inflation: <http://example.org/inflation/>
+SELECT ?country (AVG(xsd:float(?gross_earning)) AS ?averageGrossEarnings) (AVG(xsd:float(?inflationRate)) AS ?averageInflationRate)
+WHERE {
+  ?movie a movies:Movie ;
+         movies:country ?country ;
+         earnings:gross_earning ?gross_earning ;
+         movies:year ?year .
+
+  # Handle inflation data for specific years
+  OPTIONAL {
+    ?country inflation:2019 ?rate2019 .
+    FILTER(?year = 2019)
+    BIND(?rate2019 AS ?inflationRate)
+  }
+  OPTIONAL {
+    ?country inflation:2020 ?rate2020 .
+    FILTER(?year = 2020)
+    BIND(?rate2020 AS ?inflationRate)
+  }
+}
+GROUP BY ?country
+ORDER BY DESC(?averageInflationRate)
+```
+
+**Output :**
+
+![CQ9](https://github.com/user-attachments/assets/656bfd8e-86d4-4c34-8cb1-2f1e65371055)
+
+**Competency Question 10 :** "Do changes in inflation affect the average vote or ratings of movies released in those countries over the same period?"
+
+**Bridged Datasets :** movie.csv, movie_earning.csv, world_gdp_data.csv
+
+**SPARQL Query :**
+```
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX movies: <http://example.org/movies/>
+PREFIX earnings: <http://example.org/earnings/>
+PREFIX inflation: <http://example.org/inflation/>
+SELECT ?country ?year (AVG(xsd:float(?avgVote)) AS ?averageRating) (AVG(xsd:float(?inflationRate)) AS ?averageInflationRate)
+WHERE {
+  ?movie a movies:Movie ;
+         movies:country ?country ;
+         movies:year ?year ;
+         movies:avg_vote ?avgVote ;
+         movies:inflation_rate ?inflationRate .
+}
+GROUP BY ?country ?year
+ORDER BY ?country ?year
+```
+
+**Output :**
+
+![CQ10](https://github.com/user-attachments/assets/0c0bc11f-716f-4abf-840e-465dcf426d44)
+
+
+
+
+
+
+
+
+
+
+
