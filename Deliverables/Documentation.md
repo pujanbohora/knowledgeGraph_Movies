@@ -739,7 +739,7 @@ Inflation impacts production costs, ticket prices, and revenue over time, affect
 
 ### Validation
 
-**Competency Question :** "What are the most common genres for movies featuring a specific actor?"
+**Competency Question 1 :** "What are the most common genres for movies featuring a specific actor?"
 
 **Bridged Datasets :** movie.csv, movie_earning.csv
 
