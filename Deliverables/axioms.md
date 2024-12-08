@@ -537,7 +537,7 @@
           InflationTimeExtent and ObservationPeriod are disjoint classes, meaning an entity cannot belong to both classes simultaneously.
 
 10. `CurrencyType ⊓ ReleaseDate ⊑ ⊥` <br />
-          CurrencyType and ReleaseDate are disjoint classes, meaning an entity cannot belong to both classes simultaneously. k
+          CurrencyType and ReleaseDate are disjoint classes, meaning an entity cannot belong to both classes simultaneously. 
 
 
 **UserRating**<br>
