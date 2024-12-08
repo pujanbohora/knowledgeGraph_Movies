@@ -359,7 +359,7 @@
           Every EarningsValue must have an associated Currency.
 
 **MovieRating**<br>
-    ![movieRating](../schema-diagrams/MovieRating/movieRating.jpg)
+    ![movieRating](../schema-diagrams/MovieRating/movieRating.jpeg)
 
 ### Axioms
 1. MovieRatingObservation → observedProperty → Rating
@@ -479,7 +479,7 @@
           Every Distribution must have release platforms represented as a string.
 
 **InflationRate**<br>
-    ![InflationRate](../schema-diagrams/InflationRate/inflationRate.jpg)
+    ![InflationRate](../schema-diagrams/InflationRate/inflationRate.jpeg)
 
 ### Axioms
 1. InflationObservation → contains → InflationTimeExtent
@@ -529,7 +529,7 @@
 
 
 **UserRating**<br>
-    ![grossEarning](../schema-diagrams/UserRating/userRatings.jpg)
+    ![grossEarning](../schema-diagrams/UserRating/userRatings.jepg)
 
 ### Axioms
 1. UserRatingObservation → observedProperty → RatingType
@@ -594,7 +594,7 @@
 
 
 **Vote**<br>
-    ![grossEarning](../schema-diagrams/Vote/vote.jpg)
+    ![grossEarning](../schema-diagrams/Vote/vote.jpeg)
 
 ### Axioms
 1. VoteObservation → observedProperty → VoteType
@@ -659,7 +659,7 @@
 
 
 **AllTogether**<br>
-  ![AllTogether](../schema-diagrams/AllTogether/alltogether.jpg)
+  ![AllTogether](../schema-diagrams/AllTogether/alltogether.jpeg)
 
 ### Axioms
 1. Movie → providesActorRole → ActorRole
