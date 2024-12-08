@@ -529,7 +529,7 @@
 
 
 **UserRating**<br>
-    ![grossEarning](../schema-diagrams/UserRating/userRatings.jepg)
+    ![grossEarning](../schema-diagrams/UserRating/userRatings.jpeg)
 
 ### Axioms
 1. UserRatingObservation → observedProperty → RatingType
