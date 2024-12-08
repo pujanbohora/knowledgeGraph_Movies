@@ -1,0 +1,639 @@
+@prefix : <http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/> .
+
+<http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#basedIn
+:basedIn rdf:type owl:ObjectProperty ;
+         rdfs:domain :ProductionCompany ;
+         rdfs:range :Place .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#hasCity
+:hasCity rdf:type owl:ObjectProperty ;
+         rdfs:domain :Country ,
+                     :Place ;
+         rdfs:range :City .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#hasCurrency
+:hasCurrency rdf:type owl:ObjectProperty ;
+             rdfs:domain :EarningsValue ;
+             rdfs:range :Currency .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#hasEarningsType
+:hasEarningsType rdf:type owl:ObjectProperty ;
+                 rdfs:domain :GrossEarnings ;
+                 rdfs:range :EarningsType .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#hasEarningsValue
+:hasEarningsValue rdf:type owl:ObjectProperty ;
+                  rdfs:domain :GrossEarnings ;
+                  rdfs:range :EarningsValue .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#hasFilmingLocation
+:hasFilmingLocation rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Movie ;
+                    rdfs:range :Place .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#hasQuantityKind
+:hasQuantityKind rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Budget ;
+                 rdfs:range :QuantityKind .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#hasQuantityValue
+:hasQuantityValue rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Budget ;
+                  rdfs:range :QuantityValue .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#hasUnit
+:hasUnit rdf:type owl:ObjectProperty ;
+         rdfs:domain :QuantityValue ;
+         rdfs:range :Unit .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#isACitizenOf
+:isACitizenOf rdf:type owl:ObjectProperty ;
+              rdfs:domain :Person ;
+              rdfs:range :Country .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/hasTemporalExtent
+:hasTemporalExtent rdf:type owl:ObjectProperty ;
+                   rdfs:domain :ActorRole ,
+                               :DirectorRole ,
+                               :ProductionRole ;
+                   rdfs:range :ProductionPeriod ,
+                              :TemporalExtent .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/performedBy
+:performedBy rdf:type owl:ObjectProperty ;
+             rdfs:domain :ProductionRole ;
+             rdfs:range :Agent .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/performsActorRole
+:performsActorRole rdf:type owl:ObjectProperty ;
+                   rdfs:domain :ActorRole ;
+                   rdfs:range :Agent .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/performsDirectorRole
+:performsDirectorRole rdf:type owl:ObjectProperty ;
+                      rdfs:domain :DirectorRole ;
+                      rdfs:range :Agent .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/providesActorRole
+:providesActorRole rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Movie ;
+                   rdfs:range :ActorRole .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/providesDirectorRole
+:providesDirectorRole rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Movie ;
+                      rdfs:range :DirectorRole .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/providesProductionRole
+:providesProductionRole rdf:type owl:ObjectProperty ;
+                        rdfs:domain :Movie ;
+                        rdfs:range :ProductionRole .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#hasContractTerms
+:hasContractTerms rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :ExecutiveProducer ;
+                  rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#hasCreativeControl
+:hasCreativeControl rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :ExecutiveProducer ;
+                    rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#hasDistributionRegion
+:hasDistributionRegion rdf:type owl:DatatypeProperty ;
+                       rdfs:domain :Distribution ;
+                       rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#hasFinancialContribution
+:hasFinancialContribution rdf:type owl:DatatypeProperty ;
+                          rdfs:domain :ExecutiveProducer ;
+                          rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#hasName
+:hasName rdf:type owl:DatatypeProperty ;
+         rdfs:domain :City ;
+         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#hasNumericValue
+:hasNumericValue rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :EarningsValue ,
+                             :QuantityValue ;
+                 rdfs:range xsd:double ,
+                            xsd:int .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#hasReleasePlatforms
+:hasReleasePlatforms rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Distribution ;
+                     rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#hasRevenueSharePercentage
+:hasRevenueSharePercentage rdf:type owl:DatatypeProperty ;
+                           rdfs:domain :Distribution ;
+                           rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/hasBackStory
+:hasBackStory rdf:type owl:DatatypeProperty ;
+              rdfs:domain :SupportingRole ;
+              rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/hasDirectorialVision
+:hasDirectorialVision rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :MainDirector ;
+                      rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/hasFanBase
+:hasFanBase rdf:type owl:DatatypeProperty ;
+            rdfs:domain :LeadRole ;
+            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/hasKeyDecision
+:hasKeyDecision rdf:type owl:DatatypeProperty ;
+                rdfs:domain :MainDirector ;
+                rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/hasScreenTime
+:hasScreenTime rdf:type owl:DatatypeProperty ;
+               rdfs:domain :LeadRole ,
+                           :SupportingRole ;
+               rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/hasTechnicalChallenge
+:hasTechnicalChallenge rdf:type owl:DatatypeProperty ;
+                       rdfs:domain :TechnicalDirector ;
+                       rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/hasTechnologyUsed
+:hasTechnologyUsed rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :TechnicalDirector ;
+                   rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#Budget
+:Budget rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasQuantityKind ;
+                              owl:someValuesFrom :QuantityKind
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasQuantityValue ;
+                              owl:someValuesFrom :QuantityValue
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasQuantityKind ;
+                              owl:allValuesFrom :QuantityKind
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasQuantityValue ;
+                              owl:allValuesFrom :QuantityValue
+                            ] ;
+        owl:disjointWith :QuantityValue .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#City
+:City rdf:type owl:Class ;
+      owl:equivalentClass [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasName ;
+                            owl:someValuesFrom xsd:string
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasName ;
+                            owl:allValuesFrom xsd:string
+                          ] ;
+      rdfs:subClassOf :Place ;
+      owl:disjointWith :Country .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#Country
+:Country rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasCity ;
+                               owl:someValuesFrom :City
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasCity ;
+                               owl:allValuesFrom :City
+                             ] ;
+         rdfs:subClassOf :Place .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#Currency
+:Currency rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#EarningsType
+:EarningsType rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#EarningsValue
+:EarningsValue rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasCurrency ;
+                                     owl:someValuesFrom :Currency
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasCurrency ;
+                                     owl:allValuesFrom :Currency
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasNumericValue ;
+                                     owl:someValuesFrom xsd:int
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasNumericValue ;
+                                     owl:allValuesFrom xsd:int
+                                   ] .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#GrossEarnings
+:GrossEarnings rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasEarningsType ;
+                                     owl:someValuesFrom :EarningsType
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasEarningsValue ;
+                                     owl:someValuesFrom :EarningsValue
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasEarningsType ;
+                                     owl:allValuesFrom :EarningsType
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasEarningsValue ;
+                                     owl:allValuesFrom :EarningsValue
+                                   ] .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#Person
+:Person rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty :isACitizenOf ;
+                              owl:someValuesFrom :Country
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :isACitizenOf ;
+                              owl:allValuesFrom :Country
+                            ] .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#Place
+:Place rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasCity ;
+                             owl:someValuesFrom :City
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasCity ;
+                             owl:allValuesFrom :City
+                           ] .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#ProductionCompany
+:ProductionCompany rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty :basedIn ;
+                                         owl:someValuesFrom :Place
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :basedIn ;
+                                         owl:allValuesFrom :Place
+                                       ] ;
+                   owl:disjointWith :Movie .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#QuantityKind
+:QuantityKind rdf:type owl:Class ;
+              owl:disjointWith :Unit .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#QuantityValue
+:QuantityValue rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasUnit ;
+                                     owl:someValuesFrom :Unit
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasUnit ;
+                                     owl:allValuesFrom :Unit
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasNumericValue ;
+                                     owl:someValuesFrom xsd:double
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasNumericValue ;
+                                     owl:allValuesFrom xsd:double
+                                   ] .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21#Unit
+:Unit rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/ActorRole
+:ActorRole rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasTemporalExtent ;
+                                 owl:someValuesFrom :TemporalExtent
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :performsActorRole ;
+                                 owl:someValuesFrom :Agent
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasTemporalExtent ;
+                                 owl:allValuesFrom :TemporalExtent
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :performsActorRole ;
+                                 owl:allValuesFrom :Agent
+                               ] .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/Agent
+:Agent rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/DirectorRole
+:DirectorRole rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasTemporalExtent ;
+                                    owl:someValuesFrom :TemporalExtent
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :performsDirectorRole ;
+                                    owl:someValuesFrom :Agent
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasTemporalExtent ;
+                                    owl:allValuesFrom :TemporalExtent
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :performsDirectorRole ;
+                                    owl:allValuesFrom :Agent
+                                  ] .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/Distribution
+:Distribution rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasDistributionRegion ;
+                                    owl:someValuesFrom xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasReleasePlatforms ;
+                                    owl:someValuesFrom xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasRevenueSharePercentage ;
+                                    owl:someValuesFrom xsd:int
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasDistributionRegion ;
+                                    owl:allValuesFrom xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasReleasePlatforms ;
+                                    owl:allValuesFrom xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasRevenueSharePercentage ;
+                                    owl:allValuesFrom xsd:int
+                                  ] ;
+              rdfs:subClassOf :ProductionRole .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/ExecutiveProducer
+:ExecutiveProducer rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasContractTerms ;
+                                         owl:someValuesFrom xsd:int
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasCreativeControl ;
+                                         owl:someValuesFrom xsd:string
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasFinancialContribution ;
+                                         owl:someValuesFrom xsd:int
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasContractTerms ;
+                                         owl:allValuesFrom xsd:int
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasCreativeControl ;
+                                         owl:allValuesFrom xsd:string
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasFinancialContribution ;
+                                         owl:allValuesFrom xsd:int
+                                       ] ;
+                   rdfs:subClassOf :ProductionRole .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/LeadRole
+:LeadRole rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasFanBase ;
+                                owl:someValuesFrom xsd:string
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasScreenTime ;
+                                owl:someValuesFrom xsd:int
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasFanBase ;
+                                owl:allValuesFrom xsd:string
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasScreenTime ;
+                                owl:allValuesFrom xsd:int
+                              ] ;
+          rdfs:subClassOf :ActorRole .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/MainDirector
+:MainDirector rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasDirectorialVision ;
+                                    owl:someValuesFrom xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasKeyDecision ;
+                                    owl:someValuesFrom xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasDirectorialVision ;
+                                    owl:allValuesFrom xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasKeyDecision ;
+                                    owl:allValuesFrom xsd:string
+                                  ] ;
+              rdfs:subClassOf :DirectorRole ;
+              owl:disjointWith :TechnicalDirector .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/Movie
+:Movie rdf:type owl:Class ;
+       owl:equivalentClass [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasFilmingLocation ;
+                             owl:someValuesFrom :Place
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :providesActorRole ;
+                             owl:someValuesFrom :ActorRole
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :providesDirectorRole ;
+                             owl:someValuesFrom :DirectorRole
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :providesProductionRole ;
+                             owl:someValuesFrom :ProductionRole
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasFilmingLocation ;
+                             owl:allValuesFrom :Place
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :providesActorRole ;
+                             owl:allValuesFrom :ActorRole
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :providesDirectorRole ;
+                             owl:allValuesFrom :DirectorRole
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :providesProductionRole ;
+                             owl:allValuesFrom :ProductionRole
+                           ] .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/ProductionPeriod
+:ProductionPeriod rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/ProductionRole
+:ProductionRole rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasTemporalExtent ;
+                                      owl:someValuesFrom :ProductionPeriod
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :performedBy ;
+                                      owl:someValuesFrom :Agent
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasTemporalExtent ;
+                                      owl:allValuesFrom :ProductionPeriod
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :performedBy ;
+                                      owl:allValuesFrom :Agent
+                                    ] .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/SupportingRole
+:SupportingRole rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasBackStory ;
+                                      owl:someValuesFrom xsd:int
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasScreenTime ;
+                                      owl:someValuesFrom xsd:int
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasBackStory ;
+                                      owl:allValuesFrom xsd:int
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasScreenTime ;
+                                      owl:allValuesFrom xsd:int
+                                    ] ;
+                rdfs:subClassOf :ActorRole .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/TechnicalDirector
+:TechnicalDirector rdf:type owl:Class ;
+                   owl:equivalentClass [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasTechnicalChallenge ;
+                                         owl:someValuesFrom xsd:string
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasTechnologyUsed ;
+                                         owl:someValuesFrom xsd:string
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasTechnicalChallenge ;
+                                         owl:allValuesFrom xsd:string
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasTechnologyUsed ;
+                                         owl:allValuesFrom xsd:string
+                                       ] ;
+                   rdfs:subClassOf :DirectorRole .
+
+
+###  http://www.semanticweb.org/pawanbohora/ontologies/2024/11/untitled-ontology-21/TemporalExtent
+:TemporalExtent rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasTemporalExtent ;
+                                      owl:allValuesFrom :ProductionPeriod
+                                    ] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

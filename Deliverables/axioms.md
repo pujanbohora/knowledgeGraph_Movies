@@ -656,3 +656,136 @@
      * `VoteType SubClassOf hasAScale some xsd:int` <br />
           Every VoteType must have a scale.
 
+
+
+**AllTogether**<br>
+  ![AllTogether](../schema-diagrams/AllTogether/alltogether.jpg)
+
+### Axioms
+1. Movie → providesActorRole → ActorRole
+     * `Movie SubClassOf providesActorRole only ActorRole` <br />
+          The range of the relationship providesActorRole must be ActorRole.
+
+     * `Movie SubClassOf providesActorRole some ActorRole` <br />
+          Every Movie must provide at least one ActorRole.
+
+     * `ActorRole SubClassOf providedBy.Movie` <br />
+          Every ActorRole must be associated with at least one Movie.
+
+2. Movie → providesDirectorRole → DirectorRole
+     * `Movie SubClassOf providesDirectorRole only DirectorRole` <br />
+          The range of the relationship providesDirectorRole must be DirectorRole.
+
+     * `Movie SubClassOf providesDirectorRole some DirectorRole` <br />
+          Every Movie must provide at least one DirectorRole.
+
+     * `DirectorRole SubClassOf providedBy.Movie` <br />
+          Every DirectorRole must be associated with at least one Movie.
+
+3. Movie → hasGenre → Genre
+     * `Movie SubClassOf hasGenre only Genre` <br />
+          The range of the relationship hasGenre must be Genre.
+     
+     * `Movie SubClassOf hasGenre some Genre` <br />
+          Every Movie must have at least one Genre.
+
+     * `Genre SubClassOf associatedWith.Movie` <br />
+          Every Genre must belong to at least one Movie.
+
+4. Movie → providesProductionRole → ProductionRole
+     * `Movie SubClassOf providesProductionRole only ProductionRole` <br />
+          The range of the relationship providesProductionRole must be ProductionRole.
+
+     * `Movie SubClassOf providesProductionRole some ProductionRole` <br />
+          Every Movie must provide at least one ProductionRole.
+
+     * `ProductionRole SubClassOf associatedWith.Movie` <br />
+          Every ProductionRole must be associated with at least one Movie.
+
+5. Movie → hasBudget → Budget
+     * `Movie SubClassOf hasBudget only Budget` <br />
+          The range of the relationship hasBudget must be Budget.
+
+     * `Movie SubClassOf hasBudget some Budget` <br />
+          Every Movie must have at least one associated Budget.
+
+     * `Budget SubClassOf associatedWith.Movie` <br />
+          Every Budget must be associated with at least one Movie.
+
+6. Movie → hasMovieRating → MovieRating
+
+     * `Movie SubClassOf hasMovieRating only MovieRatingObservation` <br />
+          The range of the relationship hasMovieRating must be MovieRatingObservation.
+
+     * `Movie SubClassOf hasMovieRating some MovieRatingObservation` <br />
+          Every Movie must have at least one associated MovieRatingObservation.
+
+     * `MovieRatingObservation SubClassOf associatedWith.Movie` <br />
+          Every MovieRatingObservation must be associated with at least one Movie.
+
+7. Movie → hasUserRating → UserRatingObservation
+
+     * `Movie SubClassOf hasUserRating only UserRatingObservation` <br />
+          The range of the relationship hasUserRating must be UserRatingObservation.
+
+     * `Movie SubClassOf hasUserRating some UserRatingObservation` <br />
+          Every Movie must have at least one associated UserRatingObservation.
+
+     * `UserRatingObservation SubClassOf associatedWith.Movie` <br />
+          Every UserRatingObservation must be associated with at least one Movie.
+
+8. Movie → hasGrossEarning → EarningsValue
+
+     * `Movie SubClassOf hasGrossEarning only EarningsValue` <br />
+          The range of the relationship hasGrossEarning must be EarningsValue.
+
+     * `Movie SubClassOf hasGrossEarning some EarningsValue` <br />
+          Every Movie must have at least one associated EarningsValue.
+
+     * `EarningsValue SubClassOf associatedWith.Movie` <br />
+          Every EarningsValue must be associated with at least one Movie.
+
+9. Movie → hasVote → VoteObservation
+
+     * `Movie SubClassOf hasVote only VoteObservation` <br />
+          The range of the relationship hasVote must be VoteObservation.
+
+     * `Movie SubClassOf hasVote some VoteObservation` <br />
+          Every Movie must have at least one associated VoteObservation.
+
+     * `VoteObservation SubClassOf associatedWith.Movie` <br />
+          Every VoteObservation must be associated with at least one Movie.
+
+10. Movie → hasProductionCompany → ProductionCompany
+
+     * `Movie SubClassOf hasProductionCompany only ProductionCompany` <br />
+          The range of the relationship hasProductionCompany must be ProductionCompany.
+
+     * `Movie SubClassOf hasProductionCompany some ProductionCompany` <br />
+          Every Movie must have at least one associated ProductionCompany.
+
+     * `ProductionCompany SubClassOf associatedWith.Movie` <br />
+          Every ProductionCompany must be associated with at least one Movie.
+
+11. Movie → hasFilmingLocation → Place
+
+     * `Movie SubClassOf hasFilmingLocation only Place` <br />
+          The range of the relationship hasFilmingLocation must be Place.
+
+     * `Movie SubClassOf hasFilmingLocation some Place` <br />
+          Every Movie must have at least one associated Place.
+
+12. Place → hasInflation → InflationObservation
+     * `Place SubClassOf hasInflation only InflationObservation` <br />
+          The range of the relationship hasInflation must be InflationObservation.
+
+     * `Place SubClassOf hasInflation some InflationObservation` <br />
+          Every Place must have atleast one associated InflationObservation.
+
+     * `InflationObservation SubClassOf associatedWith.Place` <br />
+          Every InflationObservation must be associated with at least one Place.
+
+     
+       
+
+       
