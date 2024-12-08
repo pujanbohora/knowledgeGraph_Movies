@@ -358,54 +358,50 @@ Ratings offer a standardized assessment of movie quality or appeal, typically pr
 
 ![movieRating](../schema-diagrams/MovieRating/movieRating.jpg)
 #### Axioms
-1. MovieRatingObservation → observedProperty → Rating
+1. MovieRatingObservation → hasPhenomenonTime/hasResultTime → RatingDate
+     * `MovieRatingObservation SubClassOf hasPhenomenonTime only RatingDate` <br />
+          The range of the relationship hasPhenomenonTime must be RatingDate.
+
+     * `MovieRatingObservation SubClassOf hasPhenomenonTime some RatingDate` <br />
+          Every MovieRatingObservation must have at least one hasPhenomenonTime linked to a RatingDate.
+
+     * `MovieRatingObservation SubClassOf hasResultTime only RatingDate` <br />
+          The range of the relationship hasResultTime must be RatingDate.
+
+     * `MovieRatingObservation SubClassOf hasResultTime some RatingDate` <br />
+          Every MovieRatingObservation must have have at least one hasResultTime linked to a RatingDate.
+
+2. MovieRatingObservation → providedByPlatform → Platform
+     * `MovieRatingObservation SubClassOf providedByPlatform only Platform` <br />
+          The range of the relationship providedByPlatform must be Platform.
+     
+     * `MovieRatingObservation SubClassOf providedByPlatform some Platform` <br />
+          Every MovieRatingObservation must be linked to at least one Platform.
+
+3. MovieRatingObservation → observedProperty → Rating
      * `MovieRatingObservation SubClassOf observedProperty only Rating` <br />
           The range of the relationship observedProperty must be Rating.
 
      * `MovieRatingObservation SubClassOf observedProperty some Rating` <br />
           Every MovieRatingObservation must observe at least one Rating.
 
-2. MovieRatingObservation → hasSimpleResult → rdfs:NumericUserRatingValue
-     * `MovieRatingObservation SubClassOf hasSimpleResult only rdfs:NumericUserRatingValue` <br />
-          The range of the relationship hasSimpleResult must be rdfs:NumericUserRatingValue.
-
-     * `MovieRatingObservation SubClassOf hasSimpleResult some rdfs:NumericUserRatingValue` <br />
-          Every MovieRatingObservation must have a simple result represented as a numeric user rating value.
-
-3. MovieRatingObservation → hasPhenomenonTime → RatingDate
-     * `MovieRatingObservation SubClassOf hasPhenomenonTime only RatingDate` <br />
-          The range of the relationship hasPhenomenonTime must be RatingDate.
-
-4. MovieRatingObservation → hasResultTime → RatingDate
-     * `MovieRatingObservation SubClassOf hasResultTime only RatingDate` <br />
-          The range of the relationship hasResultTime must be RatingDate.
-
-5. `MovieRatingObservation SubClassOf hasPhenomenonTime some RatingDate and hasResultTime some RatingDate` <br />
-          Every MovieRatingObservation must have a phenomenon time and a result time represented as a RatingDate.
-
-6. `⊤ SubClassOf ≤1hasPhenomenonTime` <br />
-          Each MovieRatingObservation can have at most one hasPhenomenonTime relationship.
-
-7. MovieRatingObservation → hasResult → RatingValue
-     * `MovieRatingObservation SubClassOf hasResult only RatingValue` <br />
-          The range of the relationship hasResult must be RatingValue.
-
-     * `MovieRatingObservation SubClassOf hasResult some RatingValue` <br />
-          Every MovieRatingObservation must have a result represented by a RatingValue.
-
-8. MovieRatingObservation → hasObservedMovie → Movie
+4. MovieRatingObservation → hasObservedMovie → Movie
      * `MovieRatingObservation SubClassOf hasObservedMovie only Movie` <br />
           The range of the relationship hasObservedMovie must be Movie.
 
      * `MovieRatingObservation SubClassOf hasObservedMovie some Movie` <br />
-          Every MovieRatingObservation must be associated with at least one observed Movie.
+          Every MovieRatingObservation must observe at least one Movie.
 
-9.   * `Platform SubClassOf hasAPlatformName only xsd:String`<br>
-          The range of the relationship `hasAPlatformName` must be `xsd:String`.
+5. MovieRatingObservation → hasSimpleResult → RatingValue
+     * `MovieRatingObservation SubClassOf hasSimpleResult only RatingValue` <br />
+          The range of the relationship hasSimpleResult must be RatingValue.
 
-10.  * `Platform SubClassOf hasAPlatformName some xsd:String`<br>
-          Every `Platform` must have a name represented as a string.
+     * `MovieRatingObservation SubClassOf hasSimpleResult some RatingValue` <br />
+          Every MovieRatingObservation must have at least one simple result as a RatingValue.
 
+6. `RatingDate ⊓ Platform ⊑ ⊥` <br />
+     RatingDate and Platform are disjoint classes, meaning an entity cannot belong to both classes simultaneously.
+     
 ### Votes
 **Source Pattern :** Observation Pattern
 **Source Data :** TMDb Movie Dataset, IMDb
@@ -415,64 +411,67 @@ Votes provide a quantitative measure of audience engagement, typically reflectin
 
 ![grossEarning](../schema-diagrams/Vote/vote.jpg)
 #### Axioms
-1. VoteObservation → observedProperty → VoteType
-     * `VoteObservation SubClassOf observedProperty only VoteType` <br />
+1. VoteObservation → hasPhenomenonTime → VoteDate
+     * `VoteObservation SubClassOf hasPhenomenonTime only VoteDate` <br />
+          The range of the relationship hasPhenomenonTime must be VoteDate.
+
+     * `VoteObservation SubClassOf hasPhenomenonTime some VoteDate` <br />
+          Every VoteObservation must have at least one hasPhenomenonTime linked to a VoteDate.
+
+2. VoteObservation → providedByPlatform → Platform
+     * `VoteObservation SubClassOf providedByPlatform only Platform` <br />
+          The range of the relationship providedByPlatform must be Platform.
+
+     * `VoteObservation SubClassOf providedByPlatform some Platform` <br />
+          Every VoteObservation must be linked to at least one Platform.
+
+3. VoteObservation → observedProperty → VoteType
+     * `VoteObservation SubClassOf observedProperty somy VoteType` <br />
           The range of the relationship observedProperty must be VoteType.
 
      * `VoteObservation SubClassOf observedProperty some VoteType` <br />
           Every VoteObservation must observe at least one VoteType.
 
-2. VoteObservation → hasSimpleResult → rdfs:NumericVoteValue
-     * `VoteObservation SubClassOf hasSimpleResult only rdfs:NumericVoteValue` <br />
-          The range of the relationship hasSimpleResult must be rdfs:NumericVoteValue.
-
-     * `VoteObservation SubClassOf hasSimpleResult some rdfs:NumericVoteValue` <br />
-          Every VoteObservation must have a simple result.
-
-3. VoteObservation → hasPhenomenonTime → VoteDate
-     * `VoteObservation SubClassOf hasPhenomenonTime only VoteDate` <br />
-          The range of the relationship hasPhenomenonTime must be VoteDate.
-
-     * `VoteObservation SubClassOf hasPhenomenonTime some VoteDate` <br />
-          Every VoteObservation must have a phenomenon time.
-
-     * `VoteObservation SubClassOf hasPhenomenonTime max 1 VoteDate` <br />
-          Each VoteObservation can have at most one phenomenon time.
-
-4. VoteObservation → hasResult → VoteCount
-     * `VoteObservation SubClassOf hasResult only VoteCount` <br />
-          The range of the relationship hasResult must be VoteCount.
-
-     * `VoteObservation SubClassOf hasResult some VoteCount` <br />
-          Every VoteObservation must have a result.
-
-5. VoteObservation → hasFeatureOfInterest → Movie
+4. VoteObservation → hasFeatureOfInterest → Movie
      * `VoteObservation SubClassOf hasFeatureOfInterest only Movie` <br />
           The range of the relationship hasFeatureOfInterest must be Movie.
 
      * `VoteObservation SubClassOf hasFeatureOfInterest some Movie` <br />
-          Every VoteObservation must have a feature of interest.
+          Every VoteObservation must observe at least one Movie as its feature of interest.
+
+5. VoteObservation → hasResult → VoteCount
+     * `VoteObservation SubClassOf hasResult only VoteCount` <br />
+          The range of the relationship hasResult must be VoteCount.
+
+     * `VoteObservation SubClassOf hasResult some VoteCount` <br />
+          Every VoteObservation must have at least one result represented as a VoteCount.
 
 6. Platform → hasAPlatformName → xsd
-     * `Platform SubClassOf hasAPlatformName only xsd:String` <br />
-          The range of the relationship hasAPlatformName must be xsd:String.
-       
+     * `Platform SubClassOf hasAPlatformName only xsd:string` <br />
+          The range of the relationship hasAPlatformName must be of type xsd:string.
+
      * `Platform SubClassOf hasAPlatformName some xsd:String` <br />
-          Every Platform must have a platform name.
+          Every Platform must have a name represented as a string.
 
 7. VoteType → hasADescription → xsd
-     * `VoteType SubClassOf hasADescription only xsd:String` <br />
-          The range of the relationship hasADescription must be xsd:String.
+     * `VoteType SubClassOf hasADescription only xsd:string` <br />
+          The range of the relationship hasADescription must be of type xsd:string.
 
-     * `VoteType SubClassOf hasADescription some xsd:String` <br />
-          Every VoteType must have a description.
+     * `VoteType SubClassOf hasADescription some xsd:string` <br />
+          Every VoteType must have a description represented as a string.
 
 8. VoteType → hasAScale → xsd
      * `VoteType SubClassOf hasAScale only xsd:int` <br />
-          The range of the relationship hasAScale must be xsd:int.
+          The range of the relationship hasAScale must be of type xsd:int.
 
      * `VoteType SubClassOf hasAScale some xsd:int` <br />
-          Every VoteType must have a scale.
+          Every VoteType must have a scale represented as an integer.
+
+9. `VoteDate ⊓ Platform ⊑ ⊥` <br />
+          VoteDate and Platform are disjoint classes, meaning an entity cannot belong to both classes simultaneously.
+
+10. `VoteCount ⊓ Movie ⊑ ⊥` <br />
+          VoteCount and Movie are disjoint classes, meaning an entity cannot belong to both classes simultaneously.
 
 ### Production Companies
 **Source Pattern :** Agent Role Pattern
@@ -623,64 +622,74 @@ User ratings reflect individual viewers' assessments of a movie's quality or app
 
 ![grossEarning](../schema-diagrams/UserRating/userRatings.jpg)
 #### Axioms
-1. UserRatingObservation → observedProperty → RatingType
+1. UserRatingObservation → hasResultTime → RatingDate
+     * `UserRatingObservation SubClassOf hasResultTime only RatingDate` <br />
+          The ramge of the relationship hasResultTime must be RatingDate.
+
+     * `UserRatingObservation SubClassOf hasResultTime some RatingDate` <br />
+          Every UserRatingObservation must have at least one hasResultTime linked to a RatingDate.
+
+2. UserRatingObservation → providedByPlatform → Platform
+     * `UserRatingObservation SubClassOf providedByPlatform only Platform` <br />
+           The range of the relationship providedByPlatform must be Platform.
+
+     * `UserRatingObservation SubClassOf providedByPlatform some Platform` <br />
+          Every UserRatingObservation must be linked to at least one Platform.
+
+3. UserRatingObservation → observedProperty → RatingType
      * `UserRatingObservation SubClassOf observedProperty only RatingType` <br />
           The range of the relationship observedProperty must be RatingType.
 
      * `UserRatingObservation SubClassOf observedProperty some RatingType` <br />
           Every UserRatingObservation must observe at least one RatingType.
 
-2. UserRatingObservation → hasSimpleResult → rdfs:NumericRatingValue
-     * `UserRatingObservation SubClassOf hasSimpleResult only rdfs:NumericRatingValue` <br />
-          The range of the relationship hasSimpleResult must be rdfs:NumericRatingValue.
-
-     * `UserRatingObservation SubClassOf hasSimpleResult some rdfs:NumericRatingValue` <br />
-          Every UserRatingObservation must have a simple result as a numeric rating value.
-
-3. UserRatingObservation → hasResultTime → RatingDate
-     * `UserRatingObservation SubClassOf hasResultTime only RatingDate` <br />
-          The range of the relationship hasResultTime must be RatingDate.
-
-     * `UserRatingObservation SubClassOf hasResultTime some RatingDate` <br />
-          Every UserRatingObservation must have a result time as a RatingDate.
-
-     * `UserRatingObservation SubClassOf hasResultTime max 1 RatingDate` <br />
-          Each UserRatingObservation can have at most one hasResultTime relationship.
-
-4. UserRatingObservation → hasResult → RatingValue
-     * `UserRatingObservation SubClassOf hasResult only RatingValue` <br />
-          The range of the relationship hasResult must be RatingValue.
-
-     * `UserRatingObservation SubClassOf hasResult some RatingValue` <br />
-          Every UserRatingObservation must have a result represented by a RatingValue.
-
-5. UserRatingObservation → hasObservedMovie → Movie
+4. UserRatingObservation → hasObservedMovie → Movie
      * `UserRatingObservation SubClassOf hasObservedMovie only Movie` <br />
           The range of the relationship hasObservedMovie must be Movie.
 
      * `UserRatingObservation SubClassOf hasObservedMovie some Movie` <br />
           Every UserRatingObservation must observe at least one Movie.
 
-6. Platform → hasAPlatformName → xsd
-     * `Platform SubClassOf hasAPlatformName only xsd:String` <br />
-          The range of the relationship hasAPlatformName must be xsd:String.
+5. UserRatingObservation → hasSimpleResult → RatingValue
+     * `UserRatingObservation SubClassOf hasSimpleResult only RatingValue` <br />
+          The range of the relationship hasSimpleResult must be RatingValue.
 
-     * `Platform SubClassOf hasAPlatformName some xsd:String` <br />
-          Every Platform must have a platform name represented as a string.
+     * `UserRatingObservation SubClassOf hasSimpleResult some RatingValue` <br />
+          Every UserRatingObservation must have at least one simple result as a RatingValue.
+
+6. Platform → hasAPlatformName → xsd
+     * `Platform SubClassOf hasAPlatformName only xsd:string` <br />
+          The range of the relationship hasAPlatformName must be of type xsd:string.
+
+     * `Platform SubClassOf hasAPlatformName some xsd:string` <br />
+          Every Platform must have a name represented as a string.
 
 7. RatingType → hasADescription → xsd
-     * `RatingType SubClassOf hasADescription only xsd:String` <br />
-          The range of the relationship hasADescription must be xsd:String.
+     * `RatingType SubClassOf hasADescription only xsd:string` <br />
+          The range of the relationship hasADescription must be of type xsd:string.
 
-     * `RatingType SubClassOf hasADescription some xsd:String` <br />
+     * `RatingType SubClassOf hasADescription some xsd:string` <br />
           Every RatingType must have a description represented as a string.
 
 8. RatingType → hasMaxScale → xsd
      * `RatingType SubClassOf hasMaxScale only xsd:int` <br />
-          The range of the relationship hasMaxScale must be xsd:int.
+          The range of the relationship hasMaxScale must be of type xsd:int.
 
      * `RatingType SubClassOf hasMaxScale some xsd:int` <br />
           Every RatingType must have a maximum scale represented as an integer.
+
+9. RatingValue → hasSimpleResult → xsd
+     * `RatingValue SubClassOf hasSimpleResult only xsd:float` <br />
+          The range of the relationship hasSimpleResult must be of type xsd:float.
+
+     * `RatingValue SubClassOf hasSimpleResult some xsd:float` <br />
+          Every RatingValue must have a result represented as a float.
+
+10. `RatingDate ⊓ Platform ⊑ ⊥` <br />
+          RatingDate and Platform are disjoint classes, meaning an entity cannot belong to both classes simultaneously.
+
+11. `Movie ⊓ Platform ⊑ ⊥` <br />
+          Movie and Platform are disjoint classes, meaning an entity cannot belong to both classes simultaneously.
 
 ### Inflation
 **Source Pattern :** Temporal Extent Pattern
