@@ -1,4 +1,4 @@
-**cs7810-123**<br>
+**cs7810**<br>
 Knowledge Graph for Movies
 
 layout
