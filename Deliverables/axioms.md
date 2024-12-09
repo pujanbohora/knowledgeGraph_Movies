@@ -375,35 +375,42 @@
      * `MovieRatingObservation SubClassOf hasResultTime some RatingDate` <br />
           Every MovieRatingObservation must have have at least one hasResultTime linked to a RatingDate.
 
-2. MovieRatingObservation → providedByPlatform → Platform
-     * `MovieRatingObservation SubClassOf providedByPlatform only Platform` <br />
-          The range of the relationship providedByPlatform must be Platform.
-     
-     * `MovieRatingObservation SubClassOf providedByPlatform some Platform` <br />
-          Every MovieRatingObservation must be linked to at least one Platform.
+2. Platform → hasAMovieRatingObservation → MovieRatingObservation
+     * `Platform SubClassOf hasAMovieRatingObservation only MovieRatingObservation` <br />
+          The range of the relationship hasAMovieRatingObservation must be MovieRatingObservation.
 
-3. MovieRatingObservation → observedProperty → Rating
+     * `Platform SubClassOf hasAMovieRatingObservation some MovieRatingObservation` <br />
+          Every Platform must be linked to at least one MovieRatingObservation.
+
+3. Platform → hasAPlatformName → xsd
+     * `Platform SubClassOf hasAPlatformName only xsd:string` <br />
+          The range of the relationship hasAPlatformName must be xsd:string.
+
+     * `Platform SubClassOf hasAPlatformName some xsd:string` <br />
+          Every Platform must have a name represented as a string.
+
+4. MovieRatingObservation → observedProperty → Rating
      * `MovieRatingObservation SubClassOf observedProperty only Rating` <br />
           The range of the relationship observedProperty must be Rating.
 
      * `MovieRatingObservation SubClassOf observedProperty some Rating` <br />
           Every MovieRatingObservation must observe at least one Rating.
 
-4. MovieRatingObservation → hasObservedMovie → Movie
+5. MovieRatingObservation → hasObservedMovie → Movie
      * `MovieRatingObservation SubClassOf hasObservedMovie only Movie` <br />
           The range of the relationship hasObservedMovie must be Movie.
 
      * `MovieRatingObservation SubClassOf hasObservedMovie some Movie` <br />
           Every MovieRatingObservation must observe at least one Movie.
 
-5. MovieRatingObservation → hasSimpleResult → RatingValue
+6. MovieRatingObservation → hasSimpleResult → RatingValue
      * `MovieRatingObservation SubClassOf hasSimpleResult only RatingValue` <br />
           The range of the relationship hasSimpleResult must be RatingValue.
 
      * `MovieRatingObservation SubClassOf hasSimpleResult some RatingValue` <br />
           Every MovieRatingObservation must have at least one simple result as a RatingValue.
 
-6. `RatingDate ⊓ Platform ⊑ ⊥` <br />
+7. `RatingDate ⊓ Platform ⊑ ⊥` <br />
      RatingDate and Platform are disjoint classes, meaning an entity cannot belong to both classes simultaneously.
      
 **ProductionCompany**<br>
@@ -488,9 +495,6 @@
      * `InflationTimeExtent SubClassOf hasDuration only ObservationPeriod` <br />
           The range of the relationship hasDuration must be ObservationPeriod.
 
-3.   *  `InflationTimeExtent SubClassOf hasDuration some ObservationPeriod`<br>
-          Every `InflationTimeExtent` must have a duration represented by an `ObservationPeriod`.
-
 3. ObservationPeriod → startsFrom → ReleaseDate
      * `ObservationPeriod SubClassOf startsFrom only ReleaseDate` <br />
           The range of the relationship startsFrom must be ReleaseDate.
@@ -515,12 +519,25 @@
      * `InflationRateValue SubClassOf hasPercentage some xsd:double` <br />
           Every InflationRateValue must have a percentage represented as a double.
 
-7. ReleaseDate → hasReferenceSystem → CurrencyReferenceSyatem
-     * `ReleaseDate SubClassOf hasReferenceSystem only CurrencyReferenceSystem` <br />
-          The range of the relationship hasReferenceSystem must be CurrencyReferenceSystem.
+7. ReleaseDate → hasCurrencyType → CurrencyType
+     * `ReleaseDate SubClassOf hasCurrencyType only CurrencyType` <br />
+          The range of the relationship hasCurrencyType must be CurrencyType.
 
-     * `ReleaseDate SubClassOf hasReferenceSystem some CurrencyReferenceSystem` <br />
-          Every ReleaseDate must have a reference system associated with a CurrencyReferenceSystem.
+     * `ReleaseDate SubClassOf hasCurrencyType some CurrencyType` <br />
+          Every ReleaseDate must be linked to at least one CurrencyType.
+
+8. ObservationPeriod → hasDuration → xsd
+     * `ObservationPeriod SubClassOf hasDuration only xsd:int` <br />
+          The range of the relationship hasDuration must be of type xsd:int.
+
+     * `ObservationPeriod SubClassOf hasDuration some xsd:int` <br />
+          Every ObservationPeriod must have a duration represented as an integer.
+
+9. `InflationTimeExtent ⊓ ObservationPeriod ⊑ ⊥` <br />
+          InflationTimeExtent and ObservationPeriod are disjoint classes, meaning an entity cannot belong to both classes simultaneously.
+
+10. `CurrencyType ⊓ ReleaseDate ⊑ ⊥` <br />
+          CurrencyType and ReleaseDate are disjoint classes, meaning an entity cannot belong to both classes simultaneously. 
 
 
 **UserRating**<br>
@@ -534,12 +551,12 @@
      * `UserRatingObservation SubClassOf hasResultTime some RatingDate` <br />
           Every UserRatingObservation must have at least one hasResultTime linked to a RatingDate.
 
-2. UserRatingObservation → providedByPlatform → Platform
-     * `UserRatingObservation SubClassOf providedByPlatform only Platform` <br />
-           The range of the relationship providedByPlatform must be Platform.
-
-     * `UserRatingObservation SubClassOf providedByPlatform some Platform` <br />
-          Every UserRatingObservation must be linked to at least one Platform.
+2. Platform → hasAUserRatingObservation → UserRatingObservation 
+     * `Platform SubClassOf hasAUserRatingObservation only UserRatingObservation` <br />
+          The range of the relationship hasAUserRatingObservation must be UserRatingObservation.
+   
+     * `Platform SubClassOf hasAUserRatingObservation some UserRatingObservation` <br />
+          Every Platform must be linked to at least one UserRatingObservation.
 
 3. UserRatingObservation → observedProperty → RatingType
      * `UserRatingObservation SubClassOf observedProperty only RatingType` <br />
@@ -555,12 +572,12 @@
      * `UserRatingObservation SubClassOf hasObservedMovie some Movie` <br />
           Every UserRatingObservation must observe at least one Movie.
 
-5. UserRatingObservation → hasSimpleResult → RatingValue
-     * `UserRatingObservation SubClassOf hasSimpleResult only RatingValue` <br />
-          The range of the relationship hasSimpleResult must be RatingValue.
+5. UserRatingObservation → hasResult → RatingValue
+     * `UserRatingObservation SubClassOf hasResult only RatingValue` <br />
+          The range of the relationship hasResult must be RatingValue.
 
-     * `UserRatingObservation SubClassOf hasSimpleResult some RatingValue` <br />
-          Every UserRatingObservation must have at least one simple result as a RatingValue.
+     * `UserRatingObservation SubClassOf hasResult some RatingValue` <br />
+          Every UserRatingObservation must have at least one result as a RatingValue.
 
 6. Platform → hasAPlatformName → xsd
      * `Platform SubClassOf hasAPlatformName only xsd:string` <br />
@@ -607,12 +624,12 @@
      * `VoteObservation SubClassOf hasPhenomenonTime some VoteDate` <br />
           Every VoteObservation must have at least one hasPhenomenonTime linked to a VoteDate.
 
-2. VoteObservation → providedByPlatform → Platform
-     * `VoteObservation SubClassOf providedByPlatform only Platform` <br />
-          The range of the relationship providedByPlatform must be Platform.
+2. Platform → hasAVoteObservation → VoteObservation
+     * `Platform SubClassOf hasAVoteObservation only VoteObservation` <br />
+          The range of the relationship hasAVoteObservation must be VoteObservation.
 
-     * `VoteObservation SubClassOf providedByPlatform some Platform` <br />
-          Every VoteObservation must be linked to at least one Platform.
+     * `Platform SubClassOf hasAVoteObservation some VoteObservation` <br />
+          Every Platform must be linked to at least one VoteObservation.
 
 3. VoteObservation → observedProperty → VoteType
      * `VoteObservation SubClassOf observedProperty somy VoteType` <br />
